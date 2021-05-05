@@ -2,7 +2,7 @@
 
 ![Lang Banner Image](./static/LangBanner.png)
 
-## Two Main Rules
+## Two main rules
 
 1. Study foreign language an hour every day for the next 100 days.
 2. Tweet your progress every day with the #100DaysOfLanguage hashtag.
@@ -12,6 +12,12 @@
 If you made the decision to commit to the challenge, Click here to tweet it to the world, making yourself accountable and taking your resolve to the next level!
 
 [Tweet to commit to the challenge!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@maxwelldemaio&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
+
+## Increasing success
+
+Follow the [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts.
+
+Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
 ## How should you study?
 
@@ -37,3 +43,7 @@ If you made the decision to commit to the challenge, Click here to tweet it to t
 **Good Anki SRS conventions**
 - Basic (can include optional media and examples on back): `[Front, Back]`
 - mySentences (can include optional media and examples on back): `[Front (word within a sentence), Back, Sentence Translation]`
+
+## Contributions
+
+If you find a great resource that others would benefit from, either submit a pull request to add it to the repository, or just [tweet at me](https://twitter.com/maxwelldemaio). If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
