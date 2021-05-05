@@ -46,4 +46,4 @@ Also, please encourage others who are posting their daily updates on their progr
 
 ## Contributions
 
-If you find a great resource that others would benefit from, either submit a pull request to add it to the repository, or just [tweet at me](https://twitter.com/maxwelldemaio). If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
+If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
