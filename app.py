@@ -6,15 +6,14 @@ import time
 from dotenv import load_dotenv
 load_dotenv()
 
+# Rate limit = True: allows us to wait 15 minutes before retrying request
 auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
 auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
-
-# Rate limit= true: allows us to wait 15 minutes before retrying request
 api = tweepy.API(auth, wait_on_rate_limit=True)
 user = api.me()
 
 # Gather search terms for #100DaysOfLanguage
-search = "LanguageLearning"
+search = "100DaysOfLanguage"
 numOfTweets = 500
 
 for tweet in tweepy.Cursor(api.search, search).items(numOfTweets):
