@@ -37,6 +37,7 @@ Also, please encourage others who are posting their daily updates on their progr
 **Resources**
 - [Duolingo](https://www.duolingo.com)
 - [Anki](https://ankiweb.net/)
+- [Basic Anki Setup](https://refold.la/roadmap/stage-1/a/anki-setup)
 - [Luca Lampariello - Best Way to Learn a Language](https://www.youtube.com/watch?v=SDLlhUv519k)
 - [Matt vs. Japan - The Role of the SRS](https://www.youtube.com/watch?v=wrBFhsnBQ2k)
 
