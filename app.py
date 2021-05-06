@@ -6,24 +6,35 @@ import time
 from dotenv import load_dotenv
 load_dotenv()
 
-# Rate limit = True: allows us to wait 15 minutes before retrying request
+# Setup OAuth authentication for Tweepy
 auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
 auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
+# Rate limit = True: allows us to wait 15 minutes before retrying request
 api = tweepy.API(auth, wait_on_rate_limit=True)
-user = api.me()
 
-# Gather search terms for #100DaysOfLanguage
-search = "100DaysOfLanguage"
-numOfTweets = 500
 
-for tweet in tweepy.Cursor(api.search, search).items(numOfTweets):
-    try:
-        tweet.favorite()
-        print("Tweet liked")
-        tweet.retweet()
-        print("Tweet retweeted")
-        time.sleep(10)
-    except tweepy.TweepError as e:
-        print(e.reason)
-    except StopIteration:
-        break
+def like_and_retweet():
+    """Like and retweet the most recent 100DaysOfLanguage related tweets"""
+    
+    query = "#100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
+
+    for tweet in tweepy.Cursor(api.search, q=query).items(limit=5):
+        try:
+            # Retweet post
+            print("\nRetweet Bot found tweet by @" +
+                tweet.user.screen_name + ". " + "Attempting to retweet...")
+            tweet.retweet()
+            print("Tweet retweeted!")
+            time.sleep(10)
+
+        # Basic error handling - will print out why retweet failed to terminal
+        except tweepy.TweepError as e:
+            print(e.reason, "Tweet id: " + str(tweet.id))
+
+        except StopIteration:
+            print("Stopping...")
+            break
+
+
+if __name__ == "__main__":
+    like_and_retweet()
