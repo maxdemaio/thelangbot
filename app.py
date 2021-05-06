@@ -13,7 +13,7 @@ auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
-def like_and_retweet():
+def main():
     """Like and retweet the most recent 100DaysOfLanguage related tweets"""
     
     query = "#100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
@@ -37,4 +37,4 @@ def like_and_retweet():
 
 
 if __name__ == "__main__":
-    like_and_retweet()
+    main()
