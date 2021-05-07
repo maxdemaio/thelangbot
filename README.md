@@ -1,6 +1,6 @@
 # 100-days-of-language
 
-![ReadMeLangBanner](./static/LangBanner.png)
+![Readme banner image](./static/ReadMeLangBanner.png)
 
 ## Two main rules
 
