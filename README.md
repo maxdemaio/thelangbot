@@ -46,4 +46,4 @@ Also, please encourage others who are posting their daily updates on their progr
 
 ## Contributions
 
-If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. The best way to support the project would be to sign up for [Duolingo using my reference link](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q). If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
+If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. The best way to support the project would be to sign up for [Duolingo using my invite link](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q). If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
