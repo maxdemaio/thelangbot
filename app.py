@@ -18,7 +18,7 @@ def main():
     
     query = "#100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
 
-    for tweet in tweepy.Cursor(api.search, q=query).items(limit=10):
+    for tweet in tweepy.Cursor(api.search, q=query).items():
         try:
             # Retweet post
             print("\nRetweet Bot found tweet by @" +
