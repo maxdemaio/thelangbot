@@ -16,7 +16,7 @@ api = tweepy.API(auth, wait_on_rate_limit=True)
 def main():
     """Like and retweet the most recent 100DaysOfLanguage related tweets"""
     
-    query = "#100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
+    query = "#langtwt OR langtwt #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
 
     for tweet in tweepy.Cursor(api.search, q=query).items():
         try:
