@@ -25,7 +25,8 @@ def main():
                 tweet.user.screen_name + ". " + "Attempting to retweet...")
             tweet.retweet()
             print("Tweet retweeted!")
-            time.sleep(10)
+            # 3600 seconds / 12  = 300 tweets in one hour (rate limit)
+            time.sleep(12)
 
         # Basic error handling - will print out why retweet failed to terminal
         except tweepy.TweepError as e:
