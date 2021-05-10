@@ -26,7 +26,8 @@ def main():
             tweet.retweet()
             print("Tweet retweeted!")
             # 86400 seconds in a day / 36  = 2400 tweets in one day (rate limit)
-            time.sleep(36)
+            # 300 tweets / 3 hours limit
+            time.sleep(37)
 
         # Basic error handling - will print out why retweet failed to terminal
         except tweepy.TweepError as e:
