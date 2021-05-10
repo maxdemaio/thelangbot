@@ -18,16 +18,16 @@ def main():
     
     query = "#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
 
-    for tweet in tweepy.Cursor(api.search, q=query).items():
+    for tweet in tweepy.Cursor(api.search, q=query).items(limit=16):
         try:
             # Retweet post
             print("\nRetweet Bot found tweet by @" +
                 tweet.user.screen_name + ". " + "Attempting to retweet...")
             tweet.retweet()
             print("Tweet retweeted!")
-            # 86400 seconds in a day / 36  = 2400 tweets in one day (rate limit)
-            # 300 tweets / 3 hours limit
-            time.sleep(37)
+            # 300 tweets / 3 hours limit --> 100 tweets / 1 hour
+            # Server pings ever 10 minutes so we can do ~16 tweets every interval
+            time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
         except tweepy.TweepError as e:
