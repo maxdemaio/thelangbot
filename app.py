@@ -17,14 +17,21 @@ def main():
     """Like and retweet the most recent 100DaysOfLanguage related tweets"""
     
     query = "#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
+    newRetweets = 0 
 
-    for tweet in tweepy.Cursor(api.search, q=query).items(limit=16):
+    for tweet in tweepy.Cursor(api.search, q=query).items():
+        # Breakpoint of 16 new retweets reached
+        if newRetweets == 16:
+            break
+
         try:
             # Retweet post
             print("\nRetweet Bot found tweet by @" +
                 tweet.user.screen_name + ". " + "Attempting to retweet...")
             tweet.retweet()
             print("Tweet retweeted!")
+            # Increment newly found retweet number
+            newRetweets += 1
             # 300 tweets / 3 hours limit --> 100 tweets / 1 hour
             # Server pings ever 10 minutes so we can do ~16 tweets every interval
             time.sleep(5)
