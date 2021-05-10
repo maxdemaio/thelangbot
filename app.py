@@ -21,6 +21,8 @@ def main():
 
     for tweet in tweepy.Cursor(api.search, q=query).items():
         # Breakpoint of 16 new retweets reached
+        # 300 tweets / 3 hours limit --> 100 tweets / 1 hour
+        # Server pings ever 10 minutes so we can do ~16 tweets every interval
         if newRetweets == 16:
             break
 
@@ -32,8 +34,6 @@ def main():
             print("Tweet retweeted!")
             # Increment newly found retweet number
             newRetweets += 1
-            # 300 tweets / 3 hours limit --> 100 tweets / 1 hour
-            # Server pings ever 10 minutes so we can do ~16 tweets every interval
             time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
@@ -43,7 +43,8 @@ def main():
         except StopIteration:
             print("Stopping...")
             break
-
+    
+    print("Retweeted", newRetweets, "language tweets")
 
 if __name__ == "__main__":
     main()
