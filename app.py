@@ -39,7 +39,7 @@ def main():
         # Basic error handling - will print out why retweet failed to terminal
         except tweepy.TweepError as e:
             print(e.reason, "Tweet id: " + str(tweet.id))
-            if e.message[0]['code'] == 185:
+            if e.reason[0]['code'] == 185:
                 print("Rate limit met, ending program")
                 break
 
