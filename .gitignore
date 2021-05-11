@@ -2,3 +2,4 @@
 .env
 rateLimitMath.md
 outReach/
+__pycache__/
