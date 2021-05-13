@@ -5,7 +5,7 @@
 ## Deux règles principales
 
 1. Étudier une langue étrangère une heure par jour pendant 100 jours.
-2. Tweeter ton progrès chaque jour en utilisant le hashtag #100DaysOfLanguage
+2. Tweeter votre progrès chaque jour en utilisant le hashtag #100DaysOfLanguage
 
 ## S'engager publiquement au défi
 
