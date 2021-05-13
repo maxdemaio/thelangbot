@@ -1,24 +1,21 @@
 # 100-days-of-language
 
-![Readme banner image](./static/ReadMeLangBanner.png)
+![Readme banner image](../static/ReadMeLangBanner.png)
 
-## Translations
-[français (in progress)](./translations/README_fr.md)
+## Deux règles principales
 
-## Two main rules
+1. Étudier une langue étrangère une heure par jour pendant 100 jours.
+2. Tweeter ton progrès chaque jour en utilisant le hashtag #100DaysOfLanguage
 
-1. Study foreign language an hour every day for the next 100 days.
-2. Tweet your progress every day with the #100DaysOfLanguage hashtag.
+## S'engager publiquement au défi
 
-## Publicly commit to the challenge
-
-If you made the decision to commit to the challenge, click the link below to tweet it to the world, making yourself accountable and taking your resolve to the next level!
+Si vous avez pris la décision de vous engager au défi, cliquez le lien en bas pour tweeter au monde que vous avez commencé. Avec ce tweet, vous vous faites responsable de continuer, et vresolve to the next level!
 
 [Tweet to commit to the challenge!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@maxwelldemaio&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
 
 ## Increasing success
 
-Follow the [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.md](./100DayLog.md) to track your progress if you'd like.
+Follow the [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.md](../100DayLog.md) to track your progress if you'd like.
 
 Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
@@ -49,6 +46,7 @@ Also, please encourage others who are posting their daily updates on their progr
 
 ## Contributions
 
-- Note: Looking for translations from English to other languages of this page.
+- Note: Looking for translations from English to other languages of this page. Please 
+
 
 If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
