@@ -11,7 +11,7 @@
 
 Si vous avez pris la décision de vous engager au défi, cliquez le lien en bas pour tweeter au monde que vous avez commencé. Avec ce tweet, vous vous faites responsable de continuer, et de montrer votre détermination!
 
-[Tweeter pour commencer le défi!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@maxwelldemaio&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
+[Tweeter pour commencer le défi!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@thelangbot%20@maxwelldemaio%20&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
 
 ## Comment avoir du succès
 
