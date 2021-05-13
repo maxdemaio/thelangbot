@@ -11,17 +11,17 @@
 
 Si vous avez pris la décision de vous engager au défi, cliquez le lien en bas pour tweeter au monde que vous avez commencé. Avec ce tweet, vous vous faites responsable de continuer, et de montrer votre détermination!
 
-[Tweet to commit to the challenge!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@maxwelldemaio&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
+[Tweeter pour commencer le défi!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@maxwelldemaio&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
 
-## Increasing success
+## Comment avoir du succès
 
-Follow the [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.md](../100DayLog.md) to track your progress if you'd like.
+Suivre le [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) qui retweete tous les tweets qui contient le hashtag #100DaysOfLanguage et #langtwt. C'est un excellent moyen de rester motivé(e) et de participer à la communauté. Si vous voulez, vous pouvez prendre des notes dans un cahier pour que vous puissiez renforcer ce que vous avez appris. De plus, vous pouz télécharger et utiliser [../100DayLog.md] pour suivre votre progrès.
 
-Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
+Aussi, s'il vous plaît encourager les autres qui participent à la communauté. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
-## How should you study?
+## Comment est-ce que vous devriez étudier?
 
-**Study methodology**
+**Méthode d'étude**
 1. Unique to your circumstances
 2. Enjoyable in a way that suits your interests
 3. Flexible to different learning scenarios and environments
@@ -34,7 +34,7 @@ Also, please encourage others who are posting their daily updates on their progr
     - Speaking
 7. It should grow and evolve according to your own experiences and desires
 
-**Resources**
+**Des ressources**
 - [Duolingo](https://www.duolingo.com)
 - [Anki](https://ankiweb.net/)
 - [Luca Lampariello - Best Way to Learn a Language](https://www.youtube.com/watch?v=SDLlhUv519k)
