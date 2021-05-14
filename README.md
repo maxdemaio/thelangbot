@@ -54,3 +54,8 @@ Also, please encourage others who are posting their daily updates on their progr
 - **Note: Looking for translations from English to other languages of this page.**
 
 If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
+
+## References
+
+- Icon made by: [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
+- Inspiration of this challenge: [100DaysOfCode](https://www.100daysofcode.com/)
