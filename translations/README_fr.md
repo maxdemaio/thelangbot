@@ -2,6 +2,8 @@
 
 ![Readme banner image](../static/ReadMeLangBanner.png)
 
+![Twitter Follow](https://img.shields.io/twitter/follow/thelangbot?style=social)
+
 ## Deux règles principales
 
 1. Étudier une langue étrangère une heure par jour pendant 100 jours.
@@ -15,7 +17,7 @@ Si vous avez pris la décision de vous engager au défi, cliquez le lien en bas 
 
 ## Comment avoir du succès
 
-Suivre le [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) qui retweete tous les tweets qui contient le hashtag #100DaysOfLanguage et #langtwt. C'est un excellent moyen de rester motivé(e) et de participer à la communauté. Si vous voulez, vous pouvez prendre des notes dans un cahier pour que vous puissiez renforcer ce que vous avez appris. De plus, vous pouz télécharger et utiliser [100DayLog.md](../100DayLog.md) pour suivre votre progrès.
+Suivre le [100DaysOfLanguage Twitter Bot](https://twitter.com/thelangbot) qui retweete tous les tweets qui contient le hashtag #100DaysOfLanguage et #langtwt. C'est un excellent moyen de rester motivé(e) et de participer à la communauté. Si vous voulez, vous pouvez prendre des notes dans un cahier pour que vous puissiez renforcer ce que vous avez appris. De plus, vous pouz télécharger et utiliser [100DayLog.md](../languageLog/100DayLog.md) pour suivre votre progrès.
 
 Aussi, s'il vous plaît encourager les autres qui participent à la communauté. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
