@@ -2,7 +2,7 @@
 
 ![Readme banner image](./static/ReadMeLangBanner.png)
 
-![Twitter Follow](https://img.shields.io/twitter/follow/thelangbot?style=social)
+<a href="https://twitter.com/thelangbot/"><img src="https://img.shields.io/twitter/follow/thelangbot?style=social"></a>
 
 ## Translations
 [français (in progress)](./translations/README_fr.md)

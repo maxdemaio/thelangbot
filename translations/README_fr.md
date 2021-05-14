@@ -2,7 +2,7 @@
 
 ![Readme banner image](../static/ReadMeLangBanner.png)
 
-![Twitter Follow](https://img.shields.io/twitter/follow/thelangbot?style=social)
+<a href="https://twitter.com/thelangbot/"><img src="https://img.shields.io/twitter/follow/thelangbot?style=social"></a>
 
 ## Deux règles principales
 
