@@ -13,12 +13,10 @@ auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
-def main():
-    """Like and retweet the most recent 100DaysOfLanguage/langtwt related tweets"""
-    
-    query = "#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
+def retweet(my_query, my_limit):
+    """Retweet a specified amount tweets from the desired query"""
 
-    for tweet in tweepy.Cursor(api.search, q=query).items(limit=16):
+    for tweet in tweepy.Cursor(api.search, q=my_query).items(limit=my_limit):
         try:
             # Retweet post
             print("\nRetweet Bot found tweet by @" +
@@ -41,4 +39,4 @@ def main():
     
 
 if __name__ == "__main__":
-    main()
+    retweet("#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent", 16)
