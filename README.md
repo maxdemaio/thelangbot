@@ -8,7 +8,7 @@
 Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt
 
 ### Translations
-[français (in progress)](./translations/README_fr.md)
+[Français (in progress)](./translations/README_fr.md)
 
 ------
 
