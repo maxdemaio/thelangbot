@@ -15,7 +15,7 @@ Twitter bot to help you learn a foreign language. Building a community through t
 ## 100-days-of-language
 
 ### Two main rules
-1. Study foreign language an hour every day for the next 100 days.
+1. Study foreign language every day for the next 100 days.
 2. Tweet your progress every day with the #100DaysOfLanguage hashtag.
 
 ### Publicly commit to the challenge
