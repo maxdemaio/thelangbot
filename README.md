@@ -29,7 +29,7 @@ Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweet
 Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
 ### How should you study?
-**Study methodology**
+**Study principles**
 1. Unique to your circumstances
 2. Enjoyable in a way that suits your interests
 3. Flexible to different learning scenarios and environments
