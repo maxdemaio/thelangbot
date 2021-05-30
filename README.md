@@ -7,6 +7,9 @@
 ## About
 Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt
 
+## Affiliated Language Learning Resources
+- [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q)
+
 ### Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), and [Ру́сский](./translations/README_ru.md)
 
@@ -41,16 +44,13 @@ Also, please encourage others who are posting their daily updates on their progr
     - Listening
     - Speaking
 7. It should grow and evolve according to your own experiences and desires
-
-**Resources**
-- [Duolingo](https://www.duolingo.com)
-- [Anki](https://ankiweb.net/)
 - [Luca Lampariello - Best Way to Learn a Language](https://www.youtube.com/watch?v=SDLlhUv519k)
-- [Matt vs. Japan - The Role of the SRS](https://www.youtube.com/watch?v=wrBFhsnBQ2k)
 
 **Good Anki SRS conventions**
 - Basic (can include optional media and examples on back): `[Front, Back]`
 - mySentences (can include optional media and examples on back): `[Front (word within a sentence), Back, Sentence Translation]`
+- [Anki](https://ankiweb.net/)
+- [Matt vs. Japan - The Role of the SRS](https://www.youtube.com/watch?v=wrBFhsnBQ2k)
 
 ### Contributions
 - **Note: Looking for translations from English to other languages of this page.**
