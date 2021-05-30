@@ -8,8 +8,9 @@
 Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt
 
 ## Affiliated Language Learning Resources
-- <img src="static/duo.png" width="50px"> [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q)
--  <img src="static/italki.png" width="50px"> [Italki](https://www.italki.com/)
+<img src="static/duo.png" width="50px"> [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q)
+
+<img src="static/italki.png" width="50px"> [Italki](https://www.italki.com/)
 
 ### Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), and [Ру́сский](./translations/README_ru.md)
