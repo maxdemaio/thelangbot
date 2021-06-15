@@ -7,15 +7,15 @@
 ## About
 Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt
 
+## Translations
+[Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), and [Ру́сский](./translations/README_ru.md)
+
 ## Affiliated Language Learning Resources
 ***Hand picked resources to help you on your language learning journey***
 
 <img src="static/italki.png" width="50px"> [https://go.italki.com/thelangbot](https://go.italki.com/thelangbot) - ✨ Receive $10 of italki credits upon signing up for free! italki is a global language learning community that connects students and teachers for 1-on-1 online language lessons. italki provides an efficient, convenient, personal, and affordable way to learn languages through human interaction and cultural sharing.
 
 <img src="static/duo.png" width="50px"> [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q) - 🗺️ Free sign up! Duolingo is the most popular language-learning app in the world. Duolingo makes education free, fun, and accessible to all. The app is designed to feel like a game and scientifically proven to be effective.
-
-### Translations
-[Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), and [Ру́сский](./translations/README_ru.md)
 
 ------
 
