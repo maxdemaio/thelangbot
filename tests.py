@@ -14,3 +14,14 @@ auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 # Rate limit = True: allows us to wait 15 minutes before retrying request
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
+
+class TweepyTest(unittest.TestCase):
+  def test_checkProfile(self):
+      # Check if thelangbot user id is correct
+      self.assertEqual(api.get_user("thelangbot").id, 1389790399590506497)
+
+
+
+
+if __name__ == '__main__':
+    unittest.main()
