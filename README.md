@@ -13,7 +13,7 @@ Twitter bot to help you learn a foreign language. Building a community through t
 ## Affiliated Language Learning Resources
 ***Hand picked resources to help you on your language learning journey***
 
-<img src="static/italki.png" width="50px"> [https://go.italki.com/thelangbot](https://promos.italki.com/learnanylanguage-en/?ref=thelangbot&utm_source=thelangbot&utm_medium=partner&utm_campaign=kol&hl=en) - ✨ Receive $10 of italki credits upon signing up for free! italki is a global language learning community that connects students and teachers for 1-on-1 online language lessons. italki provides an efficient, convenient, personal, and affordable way to learn languages through human interaction and cultural sharing.
+<img src="static/italki.png" width="50px"> [https://go.italki.com/thelangbot](https://promos.italki.com/learnanylanguage-en/?ref=thelangbot&utm_source=thelangbot&utm_medium=partner&utm_campaign=kol&hl=en) - ✨ Receive $10 of free italki credits upon signing up! italki is a global language learning community that connects students and teachers for 1-on-1 online language lessons. italki provides an efficient, convenient, personal, and affordable way to learn languages through human interaction and cultural sharing.
 
 <img src="static/duo.png" width="50px"> [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q) - 🗺️ Free sign-up! Duolingo is the most popular language-learning app in the world. Duolingo makes education free, fun, and accessible to all. The app is designed to feel like a game and scientifically proven to be effective.
 
