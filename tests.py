@@ -1,6 +1,5 @@
 import os
 import tweepy
-import time
 import unittest
 from bot import retweet
 
@@ -15,12 +14,18 @@ auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
 
-class TweepyTest(unittest.TestCase):
+class LangbotTest(unittest.TestCase):
   def test_checkProfile(self):
       # Check if thelangbot user id is correct
       self.assertEqual(api.get_user("thelangbot").id, 1389790399590506497)
 
-
+  def test_checkRetweet(self):
+    # Check if already retweeted a tweet
+    try:
+      api.retweet(1405563504048889859).message
+    except tweepy.TweepError as e:
+      self.assertEqual(e.reason,
+            "[{'code': 327, 'message': 'You have already retweeted this Tweet.'}]")
 
 
 if __name__ == '__main__':
