@@ -7,6 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 # Dev NOTE: Tweet ID 1406685889925898248 is used for testing 1/3 tweets I sent in a row
+# Also, NOTE: the logs will have the most recent tweet ID if needed / can check Twitter web
 
 # Setup OAuth authentication for Tweepy
 auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
@@ -45,7 +46,7 @@ def retweet(myQuery):
             tweet.retweet()
             print(tweet.text, flush=True)
             print("Tweet retweeted!\n", flush=True)
-            
+
             # Update last seen tweet
             lastSeenId = tweet.id
             storeLastSeenId(lastSeenId, fileName)
