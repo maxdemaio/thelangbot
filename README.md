@@ -24,7 +24,7 @@ If you made the decision to commit to the challenge, click the link below to twe
 [Tweet to commit to the challenge!](https://twitter.com/intent/tweet?text=I%27m%20publicly%20committing%20to%20the%20100DaysOfLanguage%20Challenge%20starting%20today!%20Learn%20more%20and%20join%20me!%20Hey%20@thelangbot%20@maxwelldemaio%20&url=https://github.com/maxwelldemaio/100-days-of-language&hashtags=100DaysOfLanguage)
 
 ### Increasing success
-Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.md](./languageLog/100DayLog.md) to track your progress if you'd like.
+Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.txt](./languageLog/100DayLog.txt) to track your progress if you'd like.
 
 Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
 
