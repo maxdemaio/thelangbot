@@ -7,8 +7,7 @@ from dotenv import load_dotenv
 load_dotenv()
 
 """ 
-Dev NOTE: Tweet ID 1406685889925898248 is used for testing 1/3 tweets I sent in a row. So
-set the items(limit=3) to only get those three tweets and test.
+Dev NOTE: For testing purposes set the items(limit=3) to only get three tweets and test.
 Also the logs will have the most recent tweet ID if needed / can check Twitter web.
 """
 
