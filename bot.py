@@ -9,7 +9,6 @@ load_dotenv()
 """ 
 Dev NOTE: Tweet ID 1406685889925898248 is used for testing 1/3 tweets I sent in a row. So
 set the items(limit=3) to only get those three tweets and test.
-
 Also the logs will have the most recent tweet ID if needed / can check Twitter web.
 """
 
@@ -37,10 +36,11 @@ def storeLastSeenId(lastSeenId, fileName):
 
 
 def retweet(myQuery):
-    """Retweet tweets from the desired query"""
+    """Retweet tweets from the specified query"""
     # Obtain last seen tweet
     lastSeenId = retrieveLastSeenId(fileName)
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
+    i = 0
 
     for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
         try:
@@ -51,10 +51,13 @@ def retweet(myQuery):
             print(tweet.text, flush=True)
             print("Tweet retweeted!", flush=True)
 
-            # Update last seen tweet
-            currLastSeenId = tweet.id
-            storeLastSeenId(currLastSeenId, fileName)
-            print("Updating last seen tweet to: " + str(currLastSeenId) + "\n", flush=True)
+            # Update last seen tweet with the newest tweet (top of list)
+            if (i == 0):
+                currLastSeenId = tweet.id
+                storeLastSeenId(currLastSeenId, fileName)
+                print("Updating last seen tweet to: " +
+                    str(currLastSeenId) + "\n", flush=True)
+            i += 1
             time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
@@ -67,6 +70,7 @@ def retweet(myQuery):
         except StopIteration:
             print("Stopping...", flush=True)
             break
+
 
 
 if __name__ == "__main__":
