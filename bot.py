@@ -6,8 +6,12 @@ import time
 from dotenv import load_dotenv
 load_dotenv()
 
-# Dev NOTE: Tweet ID 1406685889925898248 is used for testing 1/3 tweets I sent in a row
-# Also, NOTE: the logs will have the most recent tweet ID if needed / can check Twitter web
+""" 
+Dev NOTE: Tweet ID 1406685889925898248 is used for testing 1/3 tweets I sent in a row. So
+set the items(limit=3) to only get those three tweets and test.
+
+Also the logs will have the most recent tweet ID if needed / can check Twitter web.
+"""
 
 # Setup OAuth authentication for Tweepy
 auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
@@ -36,7 +40,7 @@ def retweet(myQuery):
     """Retweet tweets from the desired query"""
     # Obtain last seen tweet
     lastSeenId = retrieveLastSeenId(fileName)
-    print("Last seen tweet: " + str(lastSeenId), flush=True)
+    print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
 
     for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
         try:
@@ -45,12 +49,12 @@ def retweet(myQuery):
                   tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
             tweet.retweet()
             print(tweet.text, flush=True)
-            print("Tweet retweeted!\n", flush=True)
+            print("Tweet retweeted!", flush=True)
 
             # Update last seen tweet
-            lastSeenId = tweet.id
-            storeLastSeenId(lastSeenId, fileName)
-            print("Updating last seen tweet to: " + str(lastSeenId), flush=True)
+            currLastSeenId = tweet.id
+            storeLastSeenId(currLastSeenId, fileName)
+            print("Updating last seen tweet to: " + str(currLastSeenId) + "\n", flush=True)
             time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
