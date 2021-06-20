@@ -26,7 +26,7 @@ If you made the decision to commit to the challenge, click the link below to twe
 ### Increasing success
 Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.txt](./languageLog/100DayLog.txt) to track your progress if you'd like.
 
-Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus it's more likely that you will stick to your own commitment meeting new friends along the way.
+Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus, it's more likely that you will stick to your own commitment meeting new friends along the way!
 
 ### How should you study?
 **Study principles**
