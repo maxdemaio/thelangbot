@@ -39,17 +39,17 @@ def retweet(myQuery):
 
     for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
         try:
-            # Update last seen tweet
-            lastSeenId = tweet.id
-            storeLastSeenId(lastSeenId, fileName)
-            print("Updating last seen tweet to: " + str(lastSeenId), flush=True)
-
             # Retweet post
             print("Retweet Bot found tweet by @" +
                   tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
             tweet.retweet()
             print(tweet.text, flush=True)
             print("Tweet retweeted!\n", flush=True)
+            
+            # Update last seen tweet
+            lastSeenId = tweet.id
+            storeLastSeenId(lastSeenId, fileName)
+            print("Updating last seen tweet to: " + str(lastSeenId), flush=True)
             time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
