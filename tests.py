@@ -22,7 +22,7 @@ class LangbotTest(unittest.TestCase):
   def test_checkRetweet(self):
     # Check if already retweeted a tweet
     try:
-      api.retweet(1405563504048889859).message
+      api.retweet(1406685889925898248).message
     except tweepy.TweepError as e:
       self.assertEqual(e.reason,
             "[{'code': 327, 'message': 'You have already retweeted this Tweet.'}]")
