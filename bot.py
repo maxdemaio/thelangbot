@@ -1,6 +1,4 @@
-import os
-import tweepy
-import time
+import os, mysql.connector, time, tweepy
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -16,28 +14,33 @@ auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
 auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 # Rate limit = True: allows us to wait 15 minutes before retrying request
 api = tweepy.API(auth, wait_on_rate_limit=True)
-# Setup file to store last tweet retweeted
-fileName = "lastSeenId.txt"
+
+# Setup MySQL db
+mydb = mysql.connector.connect(
+    host=os.getenv("DB_HOST"),
+    user=os.getenv("DB_USER"),
+    password=os.getenv("DB_PASS"),
+    database=os.getenv("DB_DB"))
+mycursor = mydb.cursor()
 
 
-def retrieveLastSeenId(fileName):
-    fRead = open(fileName, 'r')
-    lastSeenId = int(fRead.read().strip())
-    fRead.close()
-    return lastSeenId
+def retrieveLastSeenId():
+    mycursor.execute("SELECT * FROM tweet")
+    myresult = mycursor.fetchall()
+    return myresult[0][1]
 
 
-def storeLastSeenId(lastSeenId, fileName):
-    fWrite = open(fileName, 'w')
-    fWrite.write(str(lastSeenId))
-    fWrite.close()
+def storeLastSeenId(lastSeenId):
+    exampleId = (lastSeenId)
+    mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
+    mydb.commit()
+    print(mycursor.rowcount, "record(s) affected", flush=True)
     return
 
 
 def retweet(myQuery):
-    """Retweet tweets from the specified query"""
     # Obtain last seen tweet
-    lastSeenId = retrieveLastSeenId(fileName)
+    lastSeenId = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
     i = 0
 
@@ -53,7 +56,7 @@ def retweet(myQuery):
             # Update last seen tweet with the newest tweet (top of list)
             if (i == 0):
                 currLastSeenId = tweet.id
-                storeLastSeenId(currLastSeenId, fileName)
+                storeLastSeenId(currLastSeenId)
                 print("Updating last seen tweet to: " +
                     str(currLastSeenId) + "\n", flush=True)
             i += 1
@@ -74,3 +77,6 @@ def retweet(myQuery):
 
 if __name__ == "__main__":
     retweet("#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
+    mycursor.close()
+    mydb.close()
+    print("\nRetweet function completed and db connection closed", flush=True)
