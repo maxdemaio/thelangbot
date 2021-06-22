@@ -72,6 +72,7 @@ def retweet(myQuery):
         except StopIteration:
             print("Stopping...", flush=True)
             break
+    return
 
 
 
