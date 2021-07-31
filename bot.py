@@ -27,10 +27,14 @@ mycursor = mydb.cursor()
 def retrieveLastSeenId():
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
+    print("retreival type...")
+    print(type(myresult[0][1]))
     return myresult[0][1]
 
 
 def storeLastSeenId(lastSeenId):
+    print("type of last seen id...")
+    print(type(lastSeenId))
     exampleId = (lastSeenId)
     mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
     mydb.commit()
