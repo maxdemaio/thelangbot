@@ -24,17 +24,13 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def retrieveLastSeenId():
+def retrieveLastSeenId() -> int:
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
-    print("retreival type...")
-    print(type(myresult[0][1]))
     return myresult[0][1]
 
 
-def storeLastSeenId(lastSeenId):
-    print("type of last seen id...")
-    print(type(lastSeenId))
+def storeLastSeenId(lastSeenId: int) -> None:
     exampleId = (lastSeenId)
     mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
     mydb.commit()
@@ -42,7 +38,7 @@ def storeLastSeenId(lastSeenId):
     return
 
 
-def retweet(myQuery):
+def retweet(myQuery: str) -> None:
     # Obtain last seen tweet
     lastSeenId = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
