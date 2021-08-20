@@ -5,7 +5,7 @@
 <a href="https://twitter.com/thelangbot/"><img src="https://img.shields.io/twitter/follow/thelangbot?style=social"></a>
 
 ## About
-Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt
+Twitter bot to help you learn a foreign language. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
 
 ## Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), [한국어](./translations/README_kr.md), and [Ру́сский](./translations/README_ru.md)
