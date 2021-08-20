@@ -24,7 +24,7 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def checkIfPaetron(twitterUser: str) -> bool:
+def isPatreon(twitterUser: str) -> bool:
     if twitterUser == "maxwelldemaio":
         return True
     return False
@@ -44,7 +44,7 @@ def storeLastSeenId(lastSeenId: int) -> None:
     return
 
 
-def retweet(myQuery: str) -> None:
+def main(myQuery: str) -> None:
     # Obtain last seen tweet
     lastSeenId = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
@@ -58,6 +58,10 @@ def retweet(myQuery: str) -> None:
             tweet.retweet()
             print(tweet.text, flush=True)
             print("Tweet retweeted!", flush=True)
+
+            # Like post if patreon
+            if isPatreon(tweet.user.screen_name):
+                tweet.favorite()
 
             # Update last seen tweet with the newest tweet (top of list)
             if (i == 0):
@@ -83,7 +87,7 @@ def retweet(myQuery: str) -> None:
 
 
 if __name__ == "__main__":
-    retweet("#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
+    main("#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
     mycursor.close()
     mydb.close()
     print("\nRetweet function completed and db connection closed", flush=True)
