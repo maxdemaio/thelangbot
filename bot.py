@@ -61,6 +61,8 @@ def main(myQuery: str) -> None:
 
             # Like post if patreon
             if isPatreon(tweet.user.screen_name):
+                print("Liking tweet by patreon - @" +
+                      tweet.user.screen_name, flush=True)
                 tweet.favorite()
 
             # Update last seen tweet with the newest tweet (top of list)
