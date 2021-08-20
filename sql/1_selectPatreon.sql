@@ -1,1 +1,1 @@
-SELECT * FROM patreon;
+SELECT * FROM patreon WHERE twitterUser = "maxwelldemaio";

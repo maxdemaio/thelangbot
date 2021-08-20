@@ -25,7 +25,9 @@ mycursor = mydb.cursor()
 
 
 def isPatreon(twitterUser: str) -> bool:
-    if twitterUser == "maxwelldemaio":
+    mycursor.execute("SELECT * FROM patreon WHERE twitterUser = %s", (twitterUser,))
+    myresult = mycursor.fetchall()
+    if len(myresult) == 1:
         return True
     return False
 
