@@ -24,6 +24,12 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
+def checkIfPaetron(twitterUser: str) -> bool:
+    if twitterUser == "maxwelldemaio":
+        return True
+    return False
+
+
 def retrieveLastSeenId() -> int:
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
