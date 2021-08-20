@@ -1,0 +1,1 @@
+INSERT INTO paetron (twitterUser, paetronEmail) VALUES("linguisticapp", "example1@gmail.com");
