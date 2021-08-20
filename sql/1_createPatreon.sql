@@ -1,6 +1,6 @@
-CREATE TABLE paetron (
+CREATE TABLE patreon (
      id INT NOT NULL AUTO_INCREMENT,
      twitterUser VARCHAR(15) NOT NULL UNIQUE,
-     paetronEmail VARCHAR(255) NOT NULL UNIQUE,
+     patreonEmail VARCHAR(255) NOT NULL UNIQUE,
      PRIMARY KEY (id)
 );

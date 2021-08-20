@@ -10,6 +10,9 @@ Twitter bot to help you learn a foreign language. Building a community through t
 ## Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), [한국어](./translations/README_kr.md), and [Ру́сский](./translations/README_ru.md)
 
+## Support
+<a><img src="static/Digital-Patreon-Logo_FieryCoral.png" width="50px"></a> [https://www.patreon.com/thelangbot](https://www.patreon.com/thelangbot) Testing!
+
 ------
 
 ## 100-days-of-language
@@ -55,15 +58,6 @@ Also, please encourage others who are posting their daily updates on their progr
 - **Note: Looking for translations from English to other languages of this page.**
 
 If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
-
-------
-
-## Affiliated Language Learning Resources
-***Hand picked resources to help you on your language learning journey***
-
-<img src="static/italki.png" width="50px"> [https://go.italki.com/thelangbot](https://promos.italki.com/learnanylanguage-en/?ref=thelangbot&utm_source=thelangbot&utm_medium=partner&utm_campaign=kol&hl=en) - ✨ Receive $10 of free italki credits upon signing up! italki is a global language learning community that connects students and teachers for 1-on-1 online language lessons. italki provides an efficient, convenient, personal, and affordable way to learn languages through human interaction and cultural sharing.
-
-<img src="static/duo.png" width="50px"> [Duolingo](https://invite.duolingo.com/BDHTZTB5CWWKTV2SL6AEVLWK5Q) - 📗 Free sign-up! Duolingo is the most popular language-learning app in the world. Duolingo makes education free, fun, and accessible to all. The app is designed to feel like a game and scientifically proven to be effective.
 
 ------
 
