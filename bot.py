@@ -32,6 +32,15 @@ def isPatreon(twitterUser: str) -> bool:
     return False
 
 
+def isBlacklist(twitterUser: str) -> bool:
+    mycursor.execute(
+        "SELECT * FROM blacklist WHERE twitterUser = %s", (twitterUser,))
+    myresult = mycursor.fetchall()
+    if len(myresult) == 1:
+        return True
+    return False
+
+
 def retrieveLastSeenId() -> int:
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
@@ -54,6 +63,12 @@ def main(myQuery: str) -> None:
 
     for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
         try:
+            # Don't retweet if on blacklist
+            if isBlacklist(tweet.user.screen_name):
+                print("Blacklisted tweet by - @" +
+                      tweet.user.screen_name, flush=True)
+                continue
+
             # Retweet post
             print("Retweet Bot found tweet by @" +
                   tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
