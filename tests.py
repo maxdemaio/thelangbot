@@ -2,7 +2,6 @@ import os
 import mysql.connector
 import tweepy
 import unittest
-from bot import retweet
 
 # Load environment variables
 from dotenv import load_dotenv
