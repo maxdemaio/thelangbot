@@ -43,10 +43,30 @@ class LangbotTest(unittest.TestCase):
     myresult = mycursor.fetchall()
     self.assertEqual(len(myresult), 1)
 
+  def test_checkInvalidPatron(self):
+    # Check if user is not a patron
+    mycursor.execute(
+        "SELECT * FROM patreon WHERE twitterUser = %s", ("gkcs_",))
+    myresult = mycursor.fetchall()
+    self.assertEqual(len(myresult), 0)
+
+  def test_checkValidBlacklist(self):
+    # Check if user is on blacklist
+    mycursor.execute(
+        "SELECT * FROM blacklist WHERE twitterUser = %s", ("scarecrow_jpn",))
+    myresult = mycursor.fetchall()
+    self.assertEqual(len(myresult), 1)
+  
+  def test_checkInvalidBlacklist(self):
+    # Check if user is not on blacklist
+    mycursor.execute(
+        "SELECT * FROM blacklist WHERE twitterUser = %s", ("gkcs_",))
+    myresult = mycursor.fetchall()
+    self.assertEqual(len(myresult), 0)
+
 
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(exit=False)
     mycursor.close()
     mydb.close()
-    print("Test cases finished")
