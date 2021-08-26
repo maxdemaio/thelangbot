@@ -13,8 +13,6 @@ Twitter bot to help you learn foreign languages. Building a community through tw
 ## Support
 <a href="https://www.patreon.com/thelangbot"><img src="static/Digital-Patreon-Wordmark_WhiteOnFieryCoral-Sm.jpg" width="300px"></a> 
 
-<a href="https://patreon.com/thelangbot"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-"></a>
-
 If you'd like to support this open-source project, check out [@thelangbot's Patreon page](https://www.patreon.com/thelangbot)! All funds will go directly into fueling server hours and development. You'll receive recognition on this GitHub page and @thelangbot's official Twitter account. Also, if you provide your Twitter username, @thelangbot will ❤️ all of your #langtwt and #100DaysOfLanguage tweets.
 
 ------
