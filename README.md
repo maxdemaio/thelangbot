@@ -11,9 +11,8 @@ Twitter bot to help you learn foreign languages. Building a community through tw
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), [한국어](./translations/README_kr.md), and [Ру́сский](./translations/README_ru.md)
 
 ## Support
-<a href="https://www.patreon.com/thelangbot"><img src="static/Digital-Patreon-Wordmark_WhiteOnFieryCoral-Sm.jpg" width="300px"></a> 
 
-If you'd like to support this open-source project, check out [@thelangbot's Patreon page](https://www.patreon.com/thelangbot)! All funds will go directly into fueling server hours and development. You'll receive recognition on this GitHub page and @thelangbot's official Twitter account. Also, if you provide your Twitter username, @thelangbot will ❤️ all of your #langtwt and #100DaysOfLanguage tweets.
+If you'd like to support this open-source project, I will soon be starting a GitHub Sponsors page! All funds will go directly into fueling open source resources and development. You'll receive recognition on this GitHub page and @thelangbot's official Twitter account. Also, if you provide your Twitter username, @thelangbot will ❤️ all of your #langtwt and #100DaysOfLanguage tweets.
 
 ------
 
