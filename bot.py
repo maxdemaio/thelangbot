@@ -104,9 +104,11 @@ def main(myQuery: str) -> None:
             break
     
     # After iteration, store the last seen tweet id (newest)
-    storeLastSeenId(currLastSeenId)
-    print("Updating last seen tweet to: " +
-    str(currLastSeenId) + "\n", flush=True)
+    # Only store if it is different
+    if(lastSeenId != currLastSeenId):
+        storeLastSeenId(currLastSeenId)
+        print("Updating last seen tweet to: " +
+        str(currLastSeenId) + "\n", flush=True)
 
     return
 
