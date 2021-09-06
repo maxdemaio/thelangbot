@@ -24,8 +24,9 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def isPatreon(twitterUser: str) -> bool:
-    mycursor.execute("SELECT * FROM patreon WHERE twitterUser = %s", (twitterUser,))
+def isSponsor(twitterUser: str) -> bool:
+    # TODO: implement for GitHub sponsors
+    mycursor.execute("SELECT * FROM sponsor WHERE twitterUser = %s", (twitterUser,))
     myresult = mycursor.fetchall()
     if len(myresult) == 1:
         return True
@@ -48,7 +49,7 @@ def retrieveLastSeenId() -> int:
 
 
 def storeLastSeenId(lastSeenId: int) -> None:
-    exampleId = (lastSeenId)
+    exampleId: int = (lastSeenId)
     mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
     mydb.commit()
     print(mycursor.rowcount, "record(s) affected", flush=True)
@@ -57,11 +58,22 @@ def storeLastSeenId(lastSeenId: int) -> None:
 
 def main(myQuery: str) -> None:
     # Obtain last seen tweet
-    lastSeenId = retrieveLastSeenId()
+    lastSeenId: int = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
-    i = 0
 
-    for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
+    # Set up tweets from api
+    # Only select tweets from our query and since our last seen tweet
+    tweets = tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()
+
+    # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
+    # This makes the tweets ordered from oldest -> newest
+    revTweetList = reversed(list(tweets))
+
+    # Setup current last seen tweet to be the previous one
+    # This is just in case there are no items in the iterator
+    currLastSeenId: int = lastSeenId
+
+    for tweet in revTweetList:
         try:
             # Don't retweet if on blacklist
             if isBlacklist(tweet.user.screen_name):
@@ -76,19 +88,8 @@ def main(myQuery: str) -> None:
             print(tweet.text, flush=True)
             print("Tweet retweeted!", flush=True)
 
-            # Like post if patreon
-            if isPatreon(tweet.user.screen_name):
-                print("Liking tweet by patreon - @" +
-                      tweet.user.screen_name, flush=True)
-                tweet.favorite()
-
-            # Update last seen tweet with the newest tweet (top of list)
-            if (i == 0):
-                currLastSeenId = tweet.id
-                storeLastSeenId(currLastSeenId)
-                print("Updating last seen tweet to: " +
-                    str(currLastSeenId) + "\n", flush=True)
-            i += 1
+            # Update last seen tweet with the newest tweet (bottom of list)
+            currLastSeenId = tweet.id
             time.sleep(5)
 
         # Basic error handling - will print out why retweet failed to terminal
@@ -101,6 +102,12 @@ def main(myQuery: str) -> None:
         except StopIteration:
             print("Stopping...", flush=True)
             break
+    
+    # After iteration, store the last seen tweet id (newest)
+    storeLastSeenId(currLastSeenId)
+    print("Updating last seen tweet to: " +
+    str(currLastSeenId) + "\n", flush=True)
+
     return
 
 
