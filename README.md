@@ -12,9 +12,11 @@ Twitter bot to help you learn foreign languages. Building a community through tw
 
 ## Support and contributions
 **Support**
+
 If you'd like to support this open-source project, I will soon be starting a GitHub Sponsors page! All funds will go directly into fueling open source resources and development. You'll receive recognition on this GitHub page and @thelangbot's official Twitter account. Also, if you provide your Twitter username, @thelangbot will ❤️ all of your #langtwt and #100DaysOfLanguage tweets.
 
 **Contributions**
+
 - Note: Looking for translations from English to other languages of this page.
 
 If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
