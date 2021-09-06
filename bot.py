@@ -63,17 +63,15 @@ def main(myQuery: str) -> None:
 
     # Set up tweets from api
     # Only select tweets from our query and since our last seen tweet
-    tweets = tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()
-
     # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
     # This makes the tweets ordered from oldest -> newest
-    revTweetList = reversed(list(tweets))
+    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
 
     # Setup current last seen tweet to be the previous one
     # This is just in case there are no items in the iterator
     currLastSeenId: int = lastSeenId
 
-    for tweet in revTweetList:
+    for tweet in tweets:
         try:
             # Don't retweet if on blacklist
             if isBlacklist(tweet.user.screen_name):
