@@ -48,7 +48,7 @@ def retrieveLastSeenId() -> int:
 
 
 def storeLastSeenId(lastSeenId: int) -> None:
-    exampleId = (lastSeenId)
+    exampleId: int = (lastSeenId)
     mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
     mydb.commit()
     print(mycursor.rowcount, "record(s) affected", flush=True)
@@ -57,11 +57,16 @@ def storeLastSeenId(lastSeenId: int) -> None:
 
 def main(myQuery: str) -> None:
     # Obtain last seen tweet
-    lastSeenId = retrieveLastSeenId()
+    lastSeenId: int = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
-    i = 0
 
-    for tweet in tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items():
+    # Set up tweets, iterator variable, and size
+    tweets = tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()
+    i: int = 0
+    size: int = tweets.length()
+
+    # We reverse tweets since we want to tweet from oldest ->newest
+    for tweet in reversed(tweets):
         try:
             # Don't retweet if on blacklist
             if isBlacklist(tweet.user.screen_name):
@@ -83,7 +88,7 @@ def main(myQuery: str) -> None:
                 tweet.favorite()
 
             # Update last seen tweet with the newest tweet (top of list)
-            if (i == 0):
+            if (i == size - 1):
                 currLastSeenId = tweet.id
                 storeLastSeenId(currLastSeenId)
                 print("Updating last seen tweet to: " +
