@@ -1,1 +1,0 @@
-INSERT INTO patreon (twitterUser, patreonEmail) VALUES("maxwelldemaio", "example@gmail.com");

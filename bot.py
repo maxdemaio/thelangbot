@@ -24,9 +24,8 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def isSponsor(twitterUser: str) -> bool:
-    # TODO: implement for GitHub sponsors
-    mycursor.execute("SELECT * FROM sponsor WHERE twitterUser = %s", (twitterUser,))
+def isSupporter(twitterUser: str) -> bool:
+    mycursor.execute("SELECT * FROM supporter WHERE twitterUser = %s", (twitterUser,))
     myresult = mycursor.fetchall()
     if len(myresult) == 1:
         return True
@@ -78,6 +77,11 @@ def main(myQuery: str) -> None:
                 print("Blacklisted tweet by - @" +
                       tweet.user.screen_name, flush=True)
                 continue
+            
+            # Like tweet if supporter
+            if isSupporter(tweet.user.screen_name):
+                tweet.favorite()
+                print("Liking tweet by" + tweet.user.screen_name, flush=True)
 
             # Retweet post
             print("Retweet Bot found tweet by @" +

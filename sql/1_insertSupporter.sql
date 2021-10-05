@@ -1,0 +1,1 @@
+INSERT INTO supporter (twitterUser) VALUES("maxwelldemaio");
