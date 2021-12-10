@@ -64,7 +64,7 @@ def main(myQuery: str) -> None:
     # Only select tweets from our query and since our last seen tweet
     # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
     # This makes the tweets ordered from oldest -> newest
-    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items(limit=3)))
+    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
 
     # Setup current last seen tweet to be the previous one
     # This is just in case there are no items in the iterator
