@@ -64,31 +64,43 @@ def main(myQuery: str) -> None:
     # Only select tweets from our query and since our last seen tweet
     # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
     # This makes the tweets ordered from oldest -> newest
-    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
+    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items(limit=3)))
 
     # Setup current last seen tweet to be the previous one
     # This is just in case there are no items in the iterator
     currLastSeenId: int = lastSeenId
 
+    # Setup tweeters frequency map for rate limit
+    tweeters: dict[str, int] = {}
+
     for tweet in tweets:
         try:
+            twitterUser: str = tweet.user.screen_name
+            
+            # Add to frequency map
+            if twitterUser not in tweeters:
+                tweeters[twitterUser] = 1
+            else:
+                tweeters[twitterUser] += 1
+
             # Don't retweet if on blacklist
-            if isBlacklist(tweet.user.screen_name):
-                print("Blacklisted tweet by - @" +
-                      tweet.user.screen_name, flush=True)
+            if isBlacklist(twitterUser):
+                print("Blacklisted tweet by - @" + twitterUser, flush=True)
                 continue
             
-            # Like tweet if supporter
-            if isSupporter(tweet.user.screen_name):
-                tweet.favorite()
-                print("Liking tweet by" + tweet.user.screen_name, flush=True)
+            # Make sure they have not met rate limit of 2 tweets per 10 minutes
+            if tweeters[twitterUser] <= 2:
+                # Like tweet if supporter
+                if isSupporter(twitterUser):
+                    tweet.favorite()
+                    print("Liking tweet by" + twitterUser, flush=True)
 
-            # Retweet post
-            print("Retweet Bot found tweet by @" +
-                  tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
-            tweet.retweet()
-            print(tweet.text, flush=True)
-            print("Tweet retweeted!", flush=True)
+                # Retweet post
+                print("Retweet Bot found tweet by @" + 
+                    twitterUser + ". " + "Attempting to retweet...", flush=True)
+                tweet.retweet()
+                print(tweet.text, flush=True)
+                print("Tweet retweeted!", flush=True)
 
             # Update last seen tweet with the newest tweet (bottom of list)
             currLastSeenId = tweet.id
