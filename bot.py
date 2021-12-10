@@ -70,8 +70,20 @@ def main(myQuery: str) -> None:
     # This is just in case there are no items in the iterator
     currLastSeenId: int = lastSeenId
 
+    # Setup tweeters frequency map for rate limit
+    tweeters = {}
+
     for tweet in tweets:
         try:
+            # Add frequency
+            if tweet.user.screen_name not in tweeters:
+                tweeters[tweet.user.screen_name] = 1
+            else:
+                tweeters[tweet.user.screen_name] += 1
+            
+            # Don't retweet if limit met
+            print(tweeters)
+
             # Don't retweet if on blacklist
             if isBlacklist(tweet.user.screen_name):
                 print("Blacklisted tweet by - @" +
