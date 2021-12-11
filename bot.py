@@ -129,7 +129,7 @@ def main(myQuery: str) -> None:
 
 
 if __name__ == "__main__":
-    main("#langtwt OR langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
+    main("#langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
     mycursor.close()
     mydb.close()
     print("\nRetweet function completed and db connection closed", flush=True)
