@@ -41,7 +41,7 @@ def getBlacklist() -> set:
     return usernames
    
         
-# New function for getting the supports as a set of strings
+# New function for getting the supporters as a set of strings.
 def getSupporters() -> set:
     mycursor.execute(
         "SELECT twitterUser FROM supporter)
@@ -82,10 +82,10 @@ def main(myQuery: str) -> None:
     # Setup tweeters frequency map for rate limit
     tweeters: dict[str, int] = {}
 
-    # Black list is fetched here
+    # Get blacklist here
     blackList : set = getBlacklist()
         
-    # Supporters are fetched here
+    # Get supporters here
     supporters : set = getSupporters()
         
     for tweet in tweets:
