@@ -32,14 +32,24 @@ def isSupporter(twitterUser: str) -> bool:
     return False
 
 
-# New function for getting the black list as a set of strings.
+# New function for getting the blacklist as a set of strings.
 def getBlacklist() -> set:
     mycursor.execute(
         "SELECT twitterUser FROM blacklist)
     myresult = mycursor.fetchall()
     usernames = set([row[0] for row in myresult])
     return usernames
-
+   
+        
+# New function for getting the supports as a set of strings
+def getSupporters() -> set:
+    mycursor.execute(
+        "SELECT twitterUser FROM supporter)
+    myresult = mycursor.fetchall()
+    usernames = set([row[0] for row in myresult])
+    return usernames
+        
+        
 def retrieveLastSeenId() -> int:
     mycursor.execute("SELECT * FROM tweet")
     myresult = mycursor.fetchall()
@@ -73,8 +83,10 @@ def main(myQuery: str) -> None:
     tweeters: dict[str, int] = {}
 
     # Black list is fetched here
-    blackList : set = getBlacklist()  
+    blackList : set = getBlacklist()
         
+    # Supporters are fetched here
+    supporters : set = getSupporters()
         
     for tweet in tweets:
         try:
@@ -94,7 +106,7 @@ def main(myQuery: str) -> None:
             # Make sure they have not met rate limit of 2 tweets per 10 minutes
             if tweeters[twitterUser] <= 2:
                 # Like tweet if supporter
-                if isSupporter(twitterUser):
+                if twitterUser in supporters:
                     tweet.favorite()
                     print("Liking tweet by" + twitterUser, flush=True)
 
