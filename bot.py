@@ -32,14 +32,13 @@ def isSupporter(twitterUser: str) -> bool:
     return False
 
 
-def isBlacklist(twitterUser: str) -> bool:
+# New function for getting the black list as a set of strings.
+def getBlacklist() -> set:
     mycursor.execute(
-        "SELECT * FROM blacklist WHERE twitterUser = %s", (twitterUser,))
+        "SELECT twitterUser FROM blacklist)
     myresult = mycursor.fetchall()
-    if len(myresult) == 1:
-        return True
-    return False
-
+    usernames = set([row[0] for row in myresult])
+    return usernames
 
 def retrieveLastSeenId() -> int:
     mycursor.execute("SELECT * FROM tweet")
@@ -73,21 +72,25 @@ def main(myQuery: str) -> None:
     # Setup tweeters frequency map for rate limit
     tweeters: dict[str, int] = {}
 
+    # Black list is fetched here
+    blackList : set = getBlacklist()  
+        
+        
     for tweet in tweets:
         try:
             twitterUser: str = tweet.user.screen_name
             
+            #Skip if user in blacklist
+            if twitterUser in blackList:
+                print("Blacklisted tweet by - @" + twitterUser, flush=True)
+                continue
+        
             # Add to frequency map
             if twitterUser not in tweeters:
                 tweeters[twitterUser] = 1
             else:
                 tweeters[twitterUser] += 1
-
-            # Don't retweet if on blacklist
-            if isBlacklist(twitterUser):
-                print("Blacklisted tweet by - @" + twitterUser, flush=True)
-                continue
-            
+        
             # Make sure they have not met rate limit of 2 tweets per 10 minutes
             if tweeters[twitterUser] <= 2:
                 # Like tweet if supporter
