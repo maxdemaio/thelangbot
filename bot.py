@@ -27,7 +27,7 @@ mycursor = mydb.cursor()
 # New function for getting the blacklist as a set of strings.
 def getBlacklist() -> set:
     mycursor.execute(
-        "SELECT twitterUser FROM blacklist)
+        "SELECT twitterUser FROM blacklist")
     myresult = mycursor.fetchall()
     usernames = set([row[0] for row in myresult])
     return usernames
@@ -36,7 +36,7 @@ def getBlacklist() -> set:
 # New function for getting the supporters as a set of strings.
 def getSupporters() -> set:
     mycursor.execute(
-        "SELECT twitterUser FROM supporter)
+        "SELECT twitterUser FROM supporter")
     myresult = mycursor.fetchall()
     usernames = set([row[0] for row in myresult])
     return usernames
