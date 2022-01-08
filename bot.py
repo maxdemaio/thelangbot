@@ -24,14 +24,6 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-def isSupporter(twitterUser: str) -> bool:
-    mycursor.execute("SELECT * FROM supporter WHERE twitterUser = %s", (twitterUser,))
-    myresult = mycursor.fetchall()
-    if len(myresult) == 1:
-        return True
-    return False
-
-
 # New function for getting the blacklist as a set of strings.
 def getBlacklist() -> set:
     mycursor.execute(
