@@ -10,12 +10,6 @@ Twitter bot to help you learn foreign languages. Building a community through tw
 ## Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), [한국어](./translations/README_kr.md), [Ру́сский](./translations/README_ru.md), and [日本語](./translations/README_jp.md)
 
-## Community Classroom
-
-We now have a Duolingo community classroom 📚! If you'd like to join, please click on the link below.
-
-<img src="static/duo.png" width="50px"> [https://duolingo.com/classroom/zkjytg](https://duolingo.com/classroom/zkjytg)
-
 ## Contributions
 
 If you find a great resource that others would benefit from you can submit a pull request to add it to the repository. Also, feel free to tackle any open issues or new features! If you have any questions or ideas please feel free to reach out to me on Twitter: [@maxwelldemaio](https://twitter.com/maxwelldemaio).
