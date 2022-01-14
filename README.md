@@ -20,7 +20,7 @@ If you find a great resource that others would benefit from you can submit a pul
 
 We now have a Duolingo community classroom 📚! If you'd like to join, please click on the link below.
 
-![Duolingo Icon](/static/duo.png) [www.duolingo.com/classroom/zkjytg](www.duolingo.com/classroom/zkjytg)
+<img src="static/duo.png" width="50px"> [www.duolingo.com/classroom/zkjytg](www.duolingo.com/classroom/zkjytg)
 
 ------
 
