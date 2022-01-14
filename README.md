@@ -14,7 +14,7 @@ Twitter bot to help you learn foreign languages. Building a community through tw
 
 We now have a Duolingo community classroom 📚! If you'd like to join, please click on the link below.
 
-<img src="static/duo.png" width="50px"> [www.duolingo.com/classroom/zkjytg](www.duolingo.com/classroom/zkjytg)
+<img src="static/duo.png" width="50px"> [https://duolingo.com/classroom/zkjytg](https://duolingo.com/classroom/zkjytg)
 
 ## Contributions
 
