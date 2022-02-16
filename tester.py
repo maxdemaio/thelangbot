@@ -1,28 +1,34 @@
-# A tester for testing functionality of the bot in a local environment.
+# A tester for testing functionality of the bot in a local environment or on a server.
+# Database functionality is optional. If databases are being used, the databases are not updated by default.
 
 import os, importlib, time
 from mocks import mock_t
+import traceback
 
 mydb = None
 mycursor = None
 
-#Checks to see if mysql is installed and, when it is, the database and cursor are initialized. 
+#Checks to see if the mysql module is installed and, when it is, the database and cursor are initialized. 
 def setupDb() -> None:
     mysql = None
     try:
         mysql = importlib.import_module("mysql.connector")
     except:
-        print("Could not import mysql.connector. Please make sure that the module is available.")
+        print(traceback.format_exc(), flush=True)
         return
         
     global mydb, mycursor
-    mydb = mysql.connect(
-        host=os.getenv("DB_HOST"),
-        user=os.getenv("DB_USER"),
-        password=os.getenv("DB_PASS"),
-        database=os.getenv("DB_DB"))
-    mycursor = mydb.cursor()
-
+    
+    try:
+        mydb = mysql.connect(
+            host=os.getenv("DB_HOST"),
+            user=os.getenv("DB_USER"),
+            password=os.getenv("DB_PASS"),
+            database=os.getenv("DB_DB"))
+        mycursor = mydb.cursor()
+    except:
+        print(traceback.format_exc(), flush=True)
+        
 
 def getBlacklist() -> set:
     if mycursor == None:
@@ -34,8 +40,8 @@ def getBlacklist() -> set:
         myresult = mycursor.fetchall()
         usernames = set([row[0] for row in myresult])
         return usernames
-    except Exception as e:
-        print(e.reason, flush=True)
+    except:
+        print(traceback.format_exc(), flush=True)
         return set([])
         
 def getSupporters() -> set:
@@ -46,11 +52,10 @@ def getSupporters() -> set:
         mycursor.execute(
             "SELECT * FROM supporter")
         myresult = mycursor.fetchall()
-        # Convert list of tuples to set of strings
         usernames = set([row[0] for row in myresult])
         return usernames
-    except Exception as e:
-        print(e.reason, flush=True)
+    except:
+        print(traceback.format_exc(), flush=True)
         return set([])
         
 def retrieveLastSeenId() -> int:
@@ -61,8 +66,8 @@ def retrieveLastSeenId() -> int:
         mycursor.execute("SELECT * FROM tweet")
         myresult = mycursor.fetchall()
         return myresult[0][1]
-    except Exception as e:
-        print(e.reason, flush=True)
+    except:
+        print(traceback.format_exc(), flush=True)
         return 0
 
 
@@ -76,13 +81,13 @@ def storeLastSeenId(lastSeenId: int) -> None:
         mydb.commit()
         print(mycursor.rowcount, "record(s) affected", flush=True)
 
-    except Exception as e:
-        print(e.reason, flush=True)
+    except:
+        print(traceback.format_exc(), flush=True)
 
     return
 
-
-def main(tweets : list) -> None:
+#By default, databases are not updated.
+def main(tweets : list, updateDB = False) -> None:
     # Obtain last seen tweet
     lastSeenId: int = retrieveLastSeenId()
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
@@ -137,13 +142,13 @@ def main(tweets : list) -> None:
             print("Stopping...", flush=True)
             break
         
-        except Exception as e:
-            print(e.reason, "Tweet id: " + str(tweet.id), flush=True)
+        except Exception:
+            print(traceback.format_exc(), "Tweet id: " + str(tweet.id), flush=True)
 
 
     # After iteration, store the last seen tweet id (newest)
-    # Only store if it is different
-    if(lastSeenId != currLastSeenId):
+    # Only store if it is different and updateDB == True
+    if(updateDB == True and lastSeenId != currLastSeenId):
         storeLastSeenId(currLastSeenId)
         print("Updating last seen tweet to: " +
         str(currLastSeenId) + "\n", flush=True)
