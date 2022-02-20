@@ -1,10 +1,8 @@
-import mysql.Cursor as Cursor
-import mysql.connection.MySQLConnection as Connection
-
+import mysql.connector
 
 class Utils:
     # Get the blacklist as a set of strings.
-    def getBlacklist(mycursor: Cursor) -> set:
+    def getBlacklist(mycursor) -> set:
         if mycursor == None:
             return set([])
         mycursor.execute(
@@ -15,7 +13,7 @@ class Utils:
         return usernames 
             
     # Get the supporters as a set of strings.
-    def getSupporters(mycursor: Cursor) -> set:
+    def getSupporters(mycursor) -> set:
         if mycursor == None:
             return set([])
         mycursor.execute(
@@ -26,7 +24,7 @@ class Utils:
         return usernames
 
     # Get last seen Tweet id
-    def retrieveLastSeenId(mycursor: Cursor) -> int:
+    def retrieveLastSeenId(mycursor) -> int:
         if mycursor == None:
             return 0
         mycursor.execute("SELECT * FROM tweet")
@@ -34,7 +32,7 @@ class Utils:
         return myresult[0][1]
 
     # Store the last retweeted Tweet in the DB
-    def storeLastSeenId(mydb: Connection, mycursor: Cursor, lastSeenId: int) -> None:
+    def storeLastSeenId(mydb, mycursor, lastSeenId: int) -> None:
         if mycursor == None:
             return
         exampleId: int = (lastSeenId)
