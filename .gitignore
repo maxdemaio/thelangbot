@@ -1,4 +1,5 @@
 # Personal
+.idea/
 .env
 __pycache__/
 outreach/

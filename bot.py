@@ -1,74 +1,8 @@
 import os, mysql.connector, time, tweepy
-
-# Load environment variables
-from dotenv import load_dotenv
-load_dotenv()
-
-""" 
-Dev NOTE: For testing purposes set the items(limit=3) to only get three tweets and test.
-Also the logs will have the most recent tweet ID if needed / can check Twitter web.
-"""
-
-# Setup OAuth authentication for Tweepy
-auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
-auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
-# Rate limit = True: allows us to wait 15 minutes before retrying request
-api = tweepy.API(auth, wait_on_rate_limit=True)
-
-# Setup MySQL db
-mydb = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASS"),
-    database=os.getenv("DB_DB"))
-mycursor = mydb.cursor()
+from utils import Utils
 
 
-# New function for getting the blacklist as a set of strings.
-def getBlacklist() -> set:
-    mycursor.execute(
-        "SELECT * FROM blacklist")
-    myresult = mycursor.fetchall()
-    # Convert list of tuples to set of strings
-    usernames = set([row[0] for row in myresult])
-    return usernames
-   
-        
-# New function for getting the supporters as a set of strings.
-def getSupporters() -> set:
-    mycursor.execute(
-        "SELECT * FROM supporter")
-    myresult = mycursor.fetchall()
-    # Convert list of tuples to set of strings
-    usernames = set([row[0] for row in myresult])
-    return usernames
-        
-        
-def retrieveLastSeenId() -> int:
-    mycursor.execute("SELECT * FROM tweet")
-    myresult = mycursor.fetchall()
-    return myresult[0][1]
-
-
-def storeLastSeenId(lastSeenId: int) -> None:
-    exampleId: int = (lastSeenId)
-    mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
-    mydb.commit()
-    print(mycursor.rowcount, "record(s) affected", flush=True)
-    return
-
-
-def main(myQuery: str) -> None:
-    # Obtain last seen tweet
-    lastSeenId: int = retrieveLastSeenId()
-    print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
-
-    # Set up tweets from api
-    # Only select tweets from our query and since our last seen tweet
-    # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
-    # This makes the tweets ordered from oldest -> newest
-    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
-
+def main(tweets: list, mydb, mycursor, lastSeenId: int) -> None:
     # Setup current last seen tweet to be the previous one
     # This is just in case there are no items in the iterator
     currLastSeenId: int = lastSeenId
@@ -76,11 +10,8 @@ def main(myQuery: str) -> None:
     # Setup tweeters frequency map for rate limit
     tweeters: dict[str, int] = {}
 
-    # Get blacklist here
-    blackList : set = getBlacklist()
-        
-    # Get supporters here
-    supporters : set = getSupporters()
+    blackList: set = Utils.getBlacklist(mycursor)
+    supporters: set = Utils.getSupporters(mycursor)
         
     for tweet in tweets:
         try:
@@ -122,23 +53,51 @@ def main(myQuery: str) -> None:
                 print("Rate limit met, ending program", flush=True)
                 break
 
-        except StopIteration:
-            print("Stopping...", flush=True)
+        except Exception:
+            print("Stopping due to exception...", flush=True)
             break
     
     # After iteration, store the last seen tweet id (newest)
     # Only store if it is different
     if(lastSeenId != currLastSeenId):
-        storeLastSeenId(currLastSeenId)
+        Utils.storeLastSeenId(mydb, mycursor, currLastSeenId)
         print("Updating last seen tweet to: " +
         str(currLastSeenId) + "\n", flush=True)
 
     return
 
-
+    
 
 if __name__ == "__main__":
-    main("#langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
+    # Load environment variables
+    from dotenv import load_dotenv
+    load_dotenv()
+
+    # Setup OAuth authentication for Tweepy
+    auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
+    auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
+    # Rate limit = True: allows us to wait 15 minutes before retrying request
+    api = tweepy.API(auth, wait_on_rate_limit=True)
+
+    # Setup MySQL db
+    mydb = mysql.connector.connect(
+        host=os.getenv("DB_HOST"),
+        user=os.getenv("DB_USER"),
+        password=os.getenv("DB_PASS"),
+        database=os.getenv("DB_DB"))
+    mycursor = mydb.cursor()
+
+    # Set up tweets from api
+    # Only select tweets from our query and since our last seen tweet
+    # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
+    # This makes the tweets ordered from oldest -> newest
+    # Obtain last seen tweet
+    lastSeenId: int = Utils.retrieveLastSeenId(mycursor)
+    print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
+    myQuery: str = "#langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
+    tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
+
+    main(tweets, mydb, mycursor, lastSeenId)
     mycursor.close()
     mydb.close()
     print("\nRetweet function completed and db connection closed", flush=True)

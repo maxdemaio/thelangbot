@@ -1,7 +1,9 @@
-import os
-import mysql.connector
+import os, unittest
+import bot
+from mocks import mock_t
+
+from unittest.mock import MagicMock
 import tweepy
-import unittest
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -13,60 +15,45 @@ auth.set_access_token(os.getenv("ACCESS_TOKEN"), os.getenv("ACCESS_SECRET"))
 # Rate limit = True: allows us to wait 15 minutes before retrying request
 api = tweepy.API(auth, wait_on_rate_limit=True)
 
-# Setup MySQL db
-mydb = mysql.connector.connect(
-    host=os.getenv("DB_HOST"),
-    user=os.getenv("DB_USER"),
-    password=os.getenv("DB_PASS"),
-    database=os.getenv("DB_DB"))
-mycursor = mydb.cursor()
+# Setup Mock MySQL db
+# Due to None type we won't actually hit the DB
+mydb = None
+mycursor = None
 
 
-
-class LangbotTest(unittest.TestCase):
-  def test_checkValidProfile(self):
+class LangbotTests(unittest.TestCase):
+  def test_validApiProfileCheck(self):
       # Check if thelangbot user id is correct
       self.assertEqual(api.get_user("thelangbot").id, 1389790399590506497)
 
-  def test_checkInvalidRetweet(self):
-    # Check if already retweeted a tweet
-    try:
-      api.retweet(1406685889925898248)
-    except tweepy.TweepError as e:
-      self.assertEqual(e.reason,
-            "[{'code': 327, 'message': 'You have already retweeted this Tweet.'}]")
+  def test_validUtilSupporter(self):
+    # Mock the Util supporter method (don't change it's return value)
+    # Call blacklist Util method
+    # assert that it returns a set
+    return
 
-  def test_checkValidPatron(self):
-    # Check if user is a patron
-    mycursor.execute(
-        "SELECT * FROM patreon WHERE twitterUser = %s", ("maxwelldemaio",))
-    myresult = mycursor.fetchall()
-    self.assertEqual(len(myresult), 1)
+  def test_validUtilBlacklist(self):
+    # Mock the Util blacklist method (don't change it's return value)
+    # Call blacklist Util method
+    # assert that it returns a set
+    return
 
-  def test_checkInvalidPatron(self):
-    # Check if user is not a patron
-    mycursor.execute(
-        "SELECT * FROM patreon WHERE twitterUser = %s", ("gkcs_",))
-    myresult = mycursor.fetchall()
-    self.assertEqual(len(myresult), 0)
+  def test_validRetweets(self):
+    # Given list of Mock tweets
+    mock_t_list = [mock_t("user", "I study English."),
+                    mock_t("user", "I study Japanese."),
+                  mock_t("user", "I study Korean."),
+                  ]
+    # When we call api to return our list of tweets
+    # Mock response
+    bot.main(mock_t_list, mydb, mycursor, 0)
 
-  def test_checkValidBlacklist(self):
-    # Check if user is on blacklist
-    mycursor.execute(
-        "SELECT * FROM blacklist WHERE twitterUser = %s", ("scarecrow_jpn",))
-    myresult = mycursor.fetchall()
-    self.assertEqual(len(myresult), 1)
-  
-  def test_checkInvalidBlacklist(self):
-    # Check if user is not on blacklist
-    mycursor.execute(
-        "SELECT * FROM blacklist WHERE twitterUser = %s", ("gkcs_",))
-    myresult = mycursor.fetchall()
-    self.assertEqual(len(myresult), 0)
-
-
+    # Then assert we get the "Tweets retweeted" status for each tweet
+    return
 
 if __name__ == '__main__':
     unittest.main(exit=False)
-    mycursor.close()
-    mydb.close()
+    if mycursor != None:
+        mycursor.close()
+    if mydb != None:
+        mydb.close()
