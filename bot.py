@@ -2,11 +2,7 @@ import os, mysql.connector, time, tweepy
 from utils import Utils
 
 
-def main(tweets: list, mydb, mycursor) -> None:
-    # Obtain last seen tweet
-    lastSeenId: int = Utils.retrieveLastSeenId(mycursor)
-    print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
-
+def main(tweets: list, mydb, mycursor, lastSeenId: int) -> None:
     # Setup current last seen tweet to be the previous one
     # This is just in case there are no items in the iterator
     currLastSeenId: int = lastSeenId
@@ -95,10 +91,13 @@ if __name__ == "__main__":
     # Only select tweets from our query and since our last seen tweet
     # Reverse the generator (which is an iterator, all generators are iterators, all iterators are iterables)
     # This makes the tweets ordered from oldest -> newest
+    # Obtain last seen tweet
+    lastSeenId: int = Utils.retrieveLastSeenId(mycursor)
+    print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
     myQuery: str = "#langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent"
     tweets = reversed(list(tweepy.Cursor(api.search, since_id=lastSeenId, q=myQuery).items()))
 
-    main(tweets, mydb, mycursor)
+    main(tweets, mydb, mycursor, lastSeenId)
     mycursor.close()
     mydb.close()
     print("\nRetweet function completed and db connection closed", flush=True)

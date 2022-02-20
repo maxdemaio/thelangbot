@@ -46,7 +46,7 @@ class LangbotTests(unittest.TestCase):
                   ]
     # When we call api to return our list of tweets
     # Mock response
-    bot.main(mock_t_list, mydb, mycursor)
+    bot.main(mock_t_list, mydb, mycursor, 0)
 
     # Then assert we get the "Tweets retweeted" status for each tweet
     return
