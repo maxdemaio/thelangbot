@@ -1,13 +1,9 @@
 import os, mysql.connector, time, tweepy
+from utils import getBlacklist,getSupporters,retrieveLastSeenId,storeLastSeenId
 
 # Load environment variables
 from dotenv import load_dotenv
 load_dotenv()
-
-""" 
-Dev NOTE: For testing purposes set the items(limit=3) to only get three tweets and test.
-Also the logs will have the most recent tweet ID if needed / can check Twitter web.
-"""
 
 # Setup OAuth authentication for Tweepy
 auth = tweepy.OAuthHandler(os.getenv("API_KEY"), os.getenv("API_SECRET_KEY"))
@@ -24,43 +20,9 @@ mydb = mysql.connector.connect(
 mycursor = mydb.cursor()
 
 
-# New function for getting the blacklist as a set of strings.
-def getBlacklist() -> set:
-    mycursor.execute(
-        "SELECT * FROM blacklist")
-    myresult = mycursor.fetchall()
-    # Convert list of tuples to set of strings
-    usernames = set([row[0] for row in myresult])
-    return usernames
-   
-        
-# New function for getting the supporters as a set of strings.
-def getSupporters() -> set:
-    mycursor.execute(
-        "SELECT * FROM supporter")
-    myresult = mycursor.fetchall()
-    # Convert list of tuples to set of strings
-    usernames = set([row[0] for row in myresult])
-    return usernames
-        
-        
-def retrieveLastSeenId() -> int:
-    mycursor.execute("SELECT * FROM tweet")
-    myresult = mycursor.fetchall()
-    return myresult[0][1]
-
-
-def storeLastSeenId(lastSeenId: int) -> None:
-    exampleId: int = (lastSeenId)
-    mycursor.execute("UPDATE tweet SET tweetId = '%s' WHERE id = 1", (exampleId,))
-    mydb.commit()
-    print(mycursor.rowcount, "record(s) affected", flush=True)
-    return
-
-
 def main(myQuery: str) -> None:
     # Obtain last seen tweet
-    lastSeenId: int = retrieveLastSeenId()
+    lastSeenId: int = retrieveLastSeenId(mycursor)
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
 
     # Set up tweets from api
@@ -77,10 +39,10 @@ def main(myQuery: str) -> None:
     tweeters: dict[str, int] = {}
 
     # Get blacklist here
-    blackList : set = getBlacklist()
+    blackList : set = getBlacklist(mycursor)
         
     # Get supporters here
-    supporters : set = getSupporters()
+    supporters : set = getSupporters(mycursor)
         
     for tweet in tweets:
         try:
@@ -129,13 +91,13 @@ def main(myQuery: str) -> None:
     # After iteration, store the last seen tweet id (newest)
     # Only store if it is different
     if(lastSeenId != currLastSeenId):
-        storeLastSeenId(currLastSeenId)
+        storeLastSeenId(mydb, mycursor, currLastSeenId)
         print("Updating last seen tweet to: " +
         str(currLastSeenId) + "\n", flush=True)
 
     return
 
-
+    
 
 if __name__ == "__main__":
     main("#langtwt OR #100DaysOfLanguage OR 100daysoflanguage -filter:retweets -result_type:recent")
