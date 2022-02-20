@@ -1,3 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand&display=swap");
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: Quicksand, sans-serif;
+}
+
 .banner {
   text-align: center;
   width: 100%;
