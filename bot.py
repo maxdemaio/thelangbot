@@ -1,5 +1,5 @@
 import os, mysql.connector, time, tweepy
-from utils import getBlacklist,getSupporters,retrieveLastSeenId,storeLastSeenId
+from utils import Utils
 
 # Load environment variables
 from dotenv import load_dotenv
@@ -22,7 +22,7 @@ mycursor = mydb.cursor()
 
 def main(myQuery: str) -> None:
     # Obtain last seen tweet
-    lastSeenId: int = retrieveLastSeenId(mycursor)
+    lastSeenId: int = Utils.retrieveLastSeenId(mycursor)
     print("Last seen tweet: " + str(lastSeenId) + "\n", flush=True)
 
     # Set up tweets from api
@@ -39,10 +39,10 @@ def main(myQuery: str) -> None:
     tweeters: dict[str, int] = {}
 
     # Get blacklist here
-    blackList : set = getBlacklist(mycursor)
+    blackList : set = Utils.getBlacklist(mycursor)
         
     # Get supporters here
-    supporters : set = getSupporters(mycursor)
+    supporters : set = Utils.getSupporters(mycursor)
         
     for tweet in tweets:
         try:
@@ -91,7 +91,7 @@ def main(myQuery: str) -> None:
     # After iteration, store the last seen tweet id (newest)
     # Only store if it is different
     if(lastSeenId != currLastSeenId):
-        storeLastSeenId(mydb, mycursor, currLastSeenId)
+        Utils.storeLastSeenId(mydb, mycursor, currLastSeenId)
         print("Updating last seen tweet to: " +
         str(currLastSeenId) + "\n", flush=True)
 
