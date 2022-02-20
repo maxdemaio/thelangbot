@@ -1,7 +1,8 @@
 import os, unittest
+import bot
 from mocks import mock_t
-from unittest.mock import MagicMock
 
+from unittest.mock import MagicMock
 import tweepy
 
 # Load environment variables
@@ -45,11 +46,14 @@ class LangbotTests(unittest.TestCase):
                   ]
     # When we call api to return our list of tweets
     # Mock response
+    bot.main(mock_t_list, mydb, mycursor)
 
     # Then assert we get the "Tweets retweeted" status for each tweet
     return
 
 if __name__ == '__main__':
     unittest.main(exit=False)
-    mycursor.close()
-    mydb.close()
+    if mycursor != None:
+        mycursor.close()
+    if mydb != None:
+        mydb.close()

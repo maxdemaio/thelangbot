@@ -4,7 +4,7 @@ to perform functionality tests in a local environment or in a server environment
 or wasting API calls.
 '''
 
-#Counts the number of mock_t objects to assign each one an id.
+# Counts the number of mock_t objects to assign each one an id.
 mock_t_count = 0
 
 class mock_user():
