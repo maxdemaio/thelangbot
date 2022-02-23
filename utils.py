@@ -9,7 +9,8 @@ class Utils:
             "SELECT * FROM blacklist")
         myresult = mycursor.fetchall()
         # Convert list of tuples to set of strings
-        usernames = set([row[0] for row in myresult])
+        # row[1] has the username row[0] is the primary key
+        usernames = set([row[1] for row in myresult])
         return usernames 
             
     # Get the supporters as a set of strings.
@@ -20,7 +21,8 @@ class Utils:
             "SELECT * FROM supporter")
         myresult = mycursor.fetchall()
         # Convert list of tuples to set of strings
-        usernames = set([row[0] for row in myresult])
+        # row[1] has the username row[0] is the primary key
+        usernames = set([row[1] for row in myresult])
         return usernames
 
     # Get last seen Tweet id
