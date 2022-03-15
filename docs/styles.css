@@ -11,7 +11,7 @@ body {
 }
 
 main {
-  max-width: 48rem;
+  max-width: 56rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -42,6 +42,7 @@ a {
 #bannerImage {
   width: 200px;
   height: 200px;
+  border-radius: 8px;
 }
 /* -- */
 
@@ -50,12 +51,18 @@ a {
 }
 
 .creatorsContainer {
+  width: 100%;
   display: flex;
-  justify-content: center;
-  gap: 96px;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.centerHeader {
+  text-align: center;
 }
 
 .socials {
+  width: 100%;
   display: flex;
   gap: 32px;
   justify-content: center;
@@ -67,6 +74,8 @@ a {
 }
 
 .footer {
+  padding: 20px;
+  width: 100%;
   text-align: center;
 }
 
