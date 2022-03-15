@@ -34,20 +34,22 @@ a {
 
 /* Header styles */
 .banner {
-  margin-top: 40px;
   text-align: center;
   width: 100%;
 }
 
 #bannerImage {
+  margin: 32px;
   width: 200px;
   height: 200px;
   border-radius: 8px;
+  box-shadow: 8px 8px 0.4em rgba(54, 96, 119, 0.25);
 }
 /* -- */
 
 .about {
   text-align: center;
+  font-weight: 600;
 }
 
 .creatorsContainer {
