@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka+One&family=Quicksand&display=swap");
+
+body {
+  -webkit-font-smoothing: antialiased;
+  font-family: Quicksand, sans-serif;
+  font-size: 1.2em;
+  color: #333;
+  line-height: 24px;
+  background-color: rgb(252, 252, 252);
+  margin: 0px;
+}
+
+main {
+  max-width: 56rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2em;
+  padding-right: 2em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: Fredoka One, Quicksand, sans-serif;
+}
+
+a {
+  color: rgb(81, 122, 211);
+}
+
+section {
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+
+/* Header styles */
+.banner {
+  text-align: center;
+  width: 100%;
+}
+
+#bannerImage {
+  margin: 32px;
+  width: 200px;
+  height: 200px;
+  border-radius: 10px;
+  box-shadow: -10px 10px 0.4em rgba(54, 96, 119, 0.25);
+}
+/* -- */
+
+.about {
+  text-align: center;
+  font-weight: 600;
+}
+
+.creatorsContainer {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+
+.creatorImage {
+  margin: 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}
+
+.centerHeader {
+  text-align: center;
+}
+
+.socials {
+  flex-wrap: wrap;
+  width: 100%;
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  align-items: center;
+}
+
+.socials > div > img {
+  vertical-align: -0.15em;
+}
+
+.footer {
+  padding: 20px;
+  width: 100%;
+  text-align: center;
+}
+
+.hashtag {
+  color: rgb(244, 91, 105);
+}
