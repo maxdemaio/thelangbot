@@ -6,7 +6,7 @@ body {
   font-size: 1.2em;
   color: #333;
   line-height: 24px;
-  background-color: rgb(241, 241, 241);
+  background-color: rgb(252, 252, 252);
   margin: 0px;
 }
 
@@ -24,12 +24,18 @@ main {
 
 h1,
 h2,
-h3 {
+h3,
+h4 {
   font-family: Fredoka One, Quicksand, sans-serif;
 }
 
 a {
   color: rgb(81, 122, 211);
+}
+
+section {
+  margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 /* Header styles */
@@ -42,8 +48,8 @@ a {
   margin: 32px;
   width: 200px;
   height: 200px;
-  border-radius: 8px;
-  box-shadow: 8px 8px 0.4em rgba(54, 96, 119, 0.25);
+  border-radius: 10px;
+  box-shadow: -10px 10px 0.4em rgba(54, 96, 119, 0.25);
 }
 /* -- */
 
@@ -59,11 +65,19 @@ a {
   justify-content: space-around;
 }
 
+.creatorImage {
+  margin: 10px;
+  border-radius: 10px;
+  width: 100px;
+  height: 100px;
+}
+
 .centerHeader {
   text-align: center;
 }
 
 .socials {
+  flex-wrap: wrap;
   width: 100%;
   display: flex;
   gap: 32px;
@@ -82,5 +96,5 @@ a {
 }
 
 .hashtag {
-  color: rgb(19, 83, 102);
+  color: rgb(244, 91, 105);
 }
