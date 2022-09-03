@@ -7,6 +7,8 @@
 ## About
 Twitter bot to help you learn foreign languages. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
 
+https://maxdemaio.github.io/thelangbot/
+
 ## Translations
 [Français](./translations/README_fr.md), [Italiano](./translations/README_it.md), [한국어](./translations/README_kr.md), [Ру́сский](./translations/README_ru.md), and [日本語](./translations/README_jp.md)
 
