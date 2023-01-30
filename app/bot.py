@@ -33,12 +33,12 @@ def main():
 
     # Update last_seen_id
     print("Updating last seen tweet to: " +
-        str(tweets[0].id) + "\n", flush=True)
+        tweets[0].id_str + "\n", flush=True)
     with open("last_seen_id.json", "w") as f:
-        json.dump(tweets[0].id, f)
+        json.dump(tweets[0].id_str, f)
 
 def get_tweets(api, last_seen_id):
-    query = "#langtwt exclude:retweets"
+    query = "#langtwt OR #100DaysOfLanguage exclude:retweets"
     tweets = api.search(q=query, since_id=last_seen_id, tweet_mode='extended')
     return tweets
 
@@ -55,11 +55,10 @@ def retweet(api, tweets, banned_ids, supporter_ids, last_seen_id):
             frequency[tweet.user.id] = 0
         if frequency[tweet.user.id] >= 2:
             continue
-        print("thelangbot found tweet by @" + 
-                    tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
-        print("User ID is: " + tweet.user.id_str, flush=True)
+        print("thelangbot found tweet by @" + tweet.user.screen_name + ". " + "Attempting to retweet...", file=sys.stderr, flush=True)
+        print("User ID is: " + tweet.user.id_str, file=sys.stderr, flush=True)
         api.retweet(tweet.id)
-        print("Tweet retweeted!", flush=True)
+        print("Tweet retweeted!", file=sys.stderr, flush=True)
 
         frequency[tweet.user.id] += 1
 
