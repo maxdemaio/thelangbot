@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y cron
 WORKDIR /app
 
 # Copy the app directory contents into the container at /app
-COPY /app .
+COPY app/ /app/
 
 # Install the dependencies
 RUN pip install --upgrade pip

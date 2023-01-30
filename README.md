@@ -51,7 +51,7 @@ build docker image:
 docker build -t thelangbot-image .
 ```
 
-create a folder on your host machine that the docker volume will use:
+create a folder on your host machine that the docker volume will use. Note, add the json files to this folder after making the folder.
 
 ```
 cd ~

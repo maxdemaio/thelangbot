@@ -12,16 +12,17 @@ def main():
     # Authenticate with Twitter API
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
     auth.set_access_token(access_token, access_token_secret)
-    api = tweepy.API(auth, tweet_mode='extended')
+    # Rate limit = True: allows us to wait 15 minutes before retrying request
+    api = tweepy.API(auth, wait_on_rate_limit=True)
 
     # Open banned and supporter JSON files
-    with open("banned.json", "r") as f:
+    with open("data/banned.json", "r") as f:
         banned_ids = json.load(f)
-    with open("supporters.json", "r") as f:
+    with open("data/supporters.json", "r") as f:
         supporter_ids = json.load(f)
 
     # Open last_seen_id JSON file
-    with open("last_seen_id.json", "r") as f:
+    with open("data/last_seen_id.json", "r") as f:
         last_seen_id = json.load(f)
 
     # Get tweets
