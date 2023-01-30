@@ -61,7 +61,7 @@ mkdir langbot-data/
 spin up docker container after building the image:
 
 ```
-docker run -e API_KEY=your_key -e API_SECRET_KEY=your_secret -e ACCESS_TOKEN=your_token -e ACCESS_SECRET=your_token_secret -v ~/thelangbot-data:/app/data thelangbot-image
+docker run -d -e API_KEY=your_key -e API_SECRET_KEY=your_secret -e ACCESS_TOKEN=your_token -e ACCESS_SECRET=your_token_secret -v ~/thelangbot-data:/app/data thelangbot-image
 ```
 
 ---

@@ -4,10 +4,10 @@ import tweepy
 
 def main():
     # Get Twitter API credentials from environment variables
-    consumer_key = os.environ["CONSUMER_KEY"]
-    consumer_secret = os.environ["CONSUMER_SECRET"]
+    consumer_key = os.environ["API_KEY"]
+    consumer_secret = os.environ["API_SECRET_KEY"]
     access_token = os.environ["ACCESS_TOKEN"]
-    access_token_secret = os.environ["ACCESS_TOKEN_SECRET"]
+    access_token_secret = os.environ["ACCESS_SECRET"]
 
     # Authenticate with Twitter API
     auth = tweepy.OAuthHandler(consumer_key, consumer_secret)
@@ -57,7 +57,7 @@ def retweet(api, tweets, banned_ids, supporter_ids):
         api.retweet(tweet.id)
         print(tweet.text, flush=True)
         print("Tweet retweeted!", flush=True)
-        
+
         frequency[tweet.user.id] += 1
 
 if __name__ == "__main__":
