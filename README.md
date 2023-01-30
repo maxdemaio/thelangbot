@@ -2,6 +2,8 @@
 
 ![Readme banner image](./static/ReadmeBanner.png)
 
+https://twitter.com/thelangbot
+
 ## About
 
 Twitter bot to help you learn foreign languages. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
