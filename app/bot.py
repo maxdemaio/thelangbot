@@ -38,7 +38,7 @@ def main():
         json.dump(tweets[0].id, f)
 
 def get_tweets(api, last_seen_id):
-    query = "#langtwt OR #100DaysOfLanguage -filter:retweets"
+    query = "#langtwt OR #100DaysOfLanguage -filter:retweets -result_type:recent"
     tweets = api.search(q=query, since_id=last_seen_id, tweet_mode='extended')
     return tweets
 
