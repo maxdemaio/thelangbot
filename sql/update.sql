@@ -1,3 +1,0 @@
-UPDATE tweet 
-    SET tweetId = 1406685889925898248
-    WHERE id = 1;
