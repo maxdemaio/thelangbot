@@ -1,12 +1,6 @@
 {
-  "supporters": [
-    {
-      "id": 123456789,
-      "name": "John Doe"
-    },
-    {
-      "id": 987654321,
-      "name": "Jane Smith"
-    }
-  ]
+  "supporters": {
+    "111111111": "Boby Johnson",
+    "222222222": "Samantha Miller"
+  }
 }

@@ -29,7 +29,7 @@ def main():
     tweets = get_tweets(api, last_seen_id)
 
     # Retweet tweets
-    retweet(api, tweets, banned_ids, supporter_ids)
+    retweet(api, tweets, banned_ids, supporter_ids, last_seen_id)
 
     # Update last_seen_id
     print("Updating last seen tweet to: " +
@@ -38,25 +38,27 @@ def main():
         json.dump(tweets[0].id, f)
 
 def get_tweets(api, last_seen_id):
-    query = "langtwt OR #langtwt"
+    query = "#langtwt exclude:retweets"
     tweets = api.search(q=query, since_id=last_seen_id, tweet_mode='extended')
     return tweets
 
-def retweet(api, tweets, banned_ids, supporter_ids):
+def retweet(api, tweets, banned_ids, supporter_ids, last_seen_id):
     frequency = {}
     for tweet in tweets:
-        if tweet.user.id in banned_ids:
+        if tweet.id_str == last_seen_id["last_seen_id"]:
             continue
-        if tweet.user.id in supporter_ids:
+        if tweet.user.id_str in banned_ids["banned"]:
+            continue
+        if tweet.user.id_str in supporter_ids["supporters"]:
             api.create_favorite(tweet.id)
-        if tweet.user.id not in frequency:
+        if tweet.user.id_str not in frequency:
             frequency[tweet.user.id] = 0
         if frequency[tweet.user.id] >= 2:
             continue
         print("thelangbot found tweet by @" + 
                     tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
+        print("User ID is: " + tweet.user.id_str, flush=True)
         api.retweet(tweet.id)
-        print(tweet.text, flush=True)
         print("Tweet retweeted!", flush=True)
 
         frequency[tweet.user.id] += 1
