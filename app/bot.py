@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 import tweepy
 
 def main():
@@ -32,13 +33,12 @@ def main():
     retweet(api, tweets, banned_ids, supporter_ids, last_seen_id)
 
     # Update last_seen_id
-    print("Updating last seen tweet to: " +
-        tweets[0].id_str + "\n", flush=True)
+    print("Updating last seen tweet to: " + tweets[0].id_str, file=sys.stderr, flush=True)
     with open("last_seen_id.json", "w") as f:
-        json.dump(tweets[0].id_str, f)
+        json.dump(tweets[0].id, f)
 
 def get_tweets(api, last_seen_id):
-    query = "#langtwt OR #100DaysOfLanguage exclude:retweets"
+    query = "#langtwt OR #100DaysOfLanguage -filter:retweets"
     tweets = api.search(q=query, since_id=last_seen_id, tweet_mode='extended')
     return tweets
 
@@ -46,17 +46,21 @@ def retweet(api, tweets, banned_ids, supporter_ids, last_seen_id):
     frequency = {}
     for tweet in tweets:
         if tweet.id_str == last_seen_id["last_seen_id"]:
-            continue
+            print("Tweet ID " + tweet.id_str + " was the last seen ID... breaking out of loop", file=sys.stderr, flush=True)
+            break
         if tweet.user.id_str in banned_ids["banned"]:
+            print("User ID " + tweet.user.id_str + " is banned", file=sys.stderr, flush=True)
             continue
         if tweet.user.id_str in supporter_ids["supporters"]:
+            print("User ID " + tweet.user.id_str + " is a supporter", file=sys.stderr, flush=True)
             api.create_favorite(tweet.id)
         if tweet.user.id_str not in frequency:
             frequency[tweet.user.id] = 0
         if frequency[tweet.user.id] >= 2:
             continue
-        print("thelangbot found tweet by @" + tweet.user.screen_name + ". " + "Attempting to retweet...", file=sys.stderr, flush=True)
+        print("Found tweet by @" + tweet.user.screen_name, file=sys.stderr, flush=True)
         print("User ID is: " + tweet.user.id_str, file=sys.stderr, flush=True)
+        print("Tweet ID is: " + tweet.id_str, file=sys.stderr, flush=True)
         api.retweet(tweet.id)
         print("Tweet retweeted!", file=sys.stderr, flush=True)
 
