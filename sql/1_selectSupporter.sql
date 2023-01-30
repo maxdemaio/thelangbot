@@ -1,1 +1,0 @@
-SELECT * FROM supporter WHERE twitterUser = "maxwelldemaio";

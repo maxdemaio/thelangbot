@@ -1,5 +1,6 @@
 # Personal
 .idea/
 .env
+bot-cron
 __pycache__/
 outreach/

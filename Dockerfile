@@ -4,20 +4,26 @@ FROM python:3.9
 RUN apt-get update && apt-get install -y cron
 
 # Set the working directory
-WORKDIR /
+WORKDIR /app
 
-# Copy required files
-COPY requirements.txt .
+# Copy the app directory contents into the container at /app
+COPY app/ /app/
+
+# Copy hello-cron file to the cron.d directory
+COPY app/bot-cron /etc/cron.d/bot-cron
 
 # Install the dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the bot.py fle
-COPY bot.py .
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/bot-cron
 
-# Add a cron job to execute bot.py every 10 minutes
-RUN echo "*/10 * * * * cd / && python bot.py" >> /etc/crontab
+# Apply cron job
+RUN crontab /etc/cron.d/bot-cron
 
-# Start the cron service
-CMD ["cron", "-f"]
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# Run the cron job on container startup
+CMD cron && tail -f /var/log/cron.log

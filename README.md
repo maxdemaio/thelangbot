@@ -2,7 +2,7 @@
 
 ![Readme banner image](./static/ReadmeBanner.png)
 
-<a href="https://twitter.com/thelangbot/"><img src="https://img.shields.io/twitter/follow/thelangbot?style=social"></a>
+https://twitter.com/thelangbot
 
 ## About
 
@@ -35,7 +35,7 @@ If you made the decision to commit to the challenge, click the link below to twe
 
 ### Increasing success
 
-Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.txt](./languageLog/100DayLog.txt) to track your progress if you'd like.
+Follow [@thelangbot](https://twitter.com/thelangbot) that retweets all the tweets that contain the #100DaysOfLanguage and #langtwt hashtag. It’s a great way to keep yourself motivated and to participate in the community. Optionally, make sure to take notes in a physical journal to reinforce learning concepts. You can download and use [100DayLog.txt](./app/data/100DayLog.txt) to track your progress if you'd like.
 
 Also, please encourage others who are posting their daily updates on their progress. Supporting others helps build and grow a community around positivity and that is helpful and effective. Plus, it's more likely that you will stick to your own commitment meeting new friends along the way!
 
@@ -44,6 +44,30 @@ Also, please encourage others who are posting their daily updates on their progr
 ## Development
 
 This section is in progress but it will feature what you need to get a retweet bot up and running.
+
+build docker image:
+
+```
+docker build -t thelangbot-image .
+```
+
+create a folder on your host machine that the docker volume will use. Note, add the json files to this folder after making the folder.
+
+```
+cd ~
+mkdir langbot-data/
+```
+
+spin up docker container after building the image:
+
+```
+docker run -e API_KEY=your_key -e API_SECRET_KEY=your_secret -e ACCESS_TOKEN=your_token -e ACCESS_SECRET=your_token_secret -v ~/thelangbot-data:/app/data --name thelangbot-container thelangbot-image
+```
+
+checking logs
+```
+docker logs thelangbot-container
+```
 
 ---
 
