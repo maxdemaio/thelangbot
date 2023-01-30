@@ -2,8 +2,6 @@
 
 ![Readme banner image](./static/ReadmeBanner.png)
 
-<a href="https://twitter.com/thelangbot/"><img src="https://img.shields.io/twitter/follow/thelangbot?style=social"></a>
-
 ## About
 
 Twitter bot to help you learn foreign languages. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
