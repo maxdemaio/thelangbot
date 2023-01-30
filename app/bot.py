@@ -31,6 +31,8 @@ def main():
     retweet(api, tweets, banned_ids, supporter_ids)
 
     # Update last_seen_id
+    print("Updating last seen tweet to: " +
+        str(tweets[0].id) + "\n", flush=True)
     with open("last_seen_id.json", "w") as f:
         json.dump(tweets[0].id, f)
 
@@ -50,7 +52,12 @@ def retweet(api, tweets, banned_ids, supporter_ids):
             frequency[tweet.user.id] = 0
         if frequency[tweet.user.id] >= 2:
             continue
+        print("thelangbot found tweet by @" + 
+                    tweet.user.screen_name + ". " + "Attempting to retweet...", flush=True)
         api.retweet(tweet.id)
+        print(tweet.text, flush=True)
+        print("Tweet retweeted!", flush=True)
+        
         frequency[tweet.user.id] += 1
 
 if __name__ == "__main__":
