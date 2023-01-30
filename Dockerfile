@@ -13,9 +13,6 @@ COPY . .
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Create a volume for the data directory
-VOLUME ["/app/data"]
-
 # Add a cron job to execute bot.py every 10 minutes
 RUN echo "*/10 * * * * cd /app && python bot.py" >> /etc/crontab
 

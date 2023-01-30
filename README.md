@@ -45,6 +45,25 @@ Also, please encourage others who are posting their daily updates on their progr
 
 This section is in progress but it will feature what you need to get a retweet bot up and running.
 
+build docker image:
+
+```
+docker build -t thelangbot-image .
+```
+
+create a folder on your host machine that the docker volume will use:
+
+```
+cd ~
+mkdir langbot-data/
+```
+
+spin up docker container after building the image:
+
+```
+docker run -e API_KEY=your_key -e API_SECRET_KEY=your_secret -e ACCESS_TOKEN=your_token -e ACCESS_SECRET=your_token_secret -v /~thelangbot-data:/app/data thelangbot-image
+```
+
 ---
 
 ## References
