@@ -1,0 +1,8 @@
+# Twitter api
+API_KEY=
+API_SECRET_KEY=
+ACCESS_TOKEN=
+ACCESS_SECRET=
+# must be ended with a new line "LF" (Unix) and not "CRLF" (Windows)
+*/10 * * * * /usr/local/bin/python /app/bot.py >> /var/log/cron.log 2>&1
+# An empty line is required at the end of this file for a valid cron file.
