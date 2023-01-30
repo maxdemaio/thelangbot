@@ -4,20 +4,20 @@ FROM python:3.9
 RUN apt-get update && apt-get install -y cron
 
 # Set the working directory
-WORKDIR /
+WORKDIR /app
 
-# Copy required files
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . .
 
 # Install the dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Copy the bot.py fle
-COPY bot.py .
+# Create a volume for the data directory
+VOLUME ["/app/data"]
 
 # Add a cron job to execute bot.py every 10 minutes
-RUN echo "*/10 * * * * cd / && python bot.py" >> /etc/crontab
+RUN echo "*/10 * * * * cd /app && python bot.py" >> /etc/crontab
 
 # Start the cron service
 CMD ["cron", "-f"]
