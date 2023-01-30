@@ -34,8 +34,9 @@ def main():
 
     # Update last_seen_id
     print("Updating last seen tweet to: " + tweets[0].id_str, file=sys.stderr, flush=True)
-    with open("last_seen_id.json", "w") as f:
-        json.dump(tweets[0].id, f)
+    last_seen_id["last_seen_id"] = tweets[0].id_str
+    with open("data/last_seen_id.json", "w") as f:
+        json.dump(last_seen_id, f)
 
 def get_tweets(api, last_seen_id):
     query = "#langtwt OR #100DaysOfLanguage -filter:retweets -result_type:recent"
