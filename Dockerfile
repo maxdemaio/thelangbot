@@ -9,12 +9,21 @@ WORKDIR /app
 # Copy the app directory contents into the container at /app
 COPY app/ /app/
 
+# Copy hello-cron file to the cron.d directory
+COPY app/bot-cron /etc/cron.d/bot-cron
+
 # Install the dependencies
 RUN pip install --upgrade pip
 RUN pip install -r requirements.txt
 
-# Set up the cron job
-RUN echo "*/10 * * * * /usr/local/bin/python /app/bot.py" >> /etc/crontab
+# Give execution rights on the cron job
+RUN chmod 0644 /etc/cron.d/bot-cron
 
-# Start the cron service
-CMD ["cron", "-f"]
+# Apply cron job
+RUN crontab /etc/cron.d/bot-cron
+
+# Create the log file to be able to run tail
+RUN touch /var/log/cron.log
+
+# Run the cron job on container startup
+CMD cron && tail -f /var/log/cron.log

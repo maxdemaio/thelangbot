@@ -17,13 +17,13 @@ def main():
     api = tweepy.API(auth, wait_on_rate_limit=True)
 
     # Open banned and supporter JSON files
-    with open("data/banned.json", "r") as f:
+    with open("/app/data/banned.json", "r") as f:
         banned_ids = json.load(f)
-    with open("data/supporters.json", "r") as f:
+    with open("/app/data/supporters.json", "r") as f:
         supporter_ids = json.load(f)
 
     # Open last_seen_id JSON file
-    with open("data/last_seen_id.json", "r") as f:
+    with open("/app/data/last_seen_id.json", "r") as f:
         last_seen_id = json.load(f)
 
     # Get tweets
@@ -35,7 +35,7 @@ def main():
     # Update last_seen_id
     print("Updating last seen tweet to: " + tweets[0].id_str, file=sys.stderr, flush=True)
     last_seen_id["last_seen_id"] = tweets[0].id_str
-    with open("data/last_seen_id.json", "w") as f:
+    with open("/app/data/last_seen_id.json", "w") as f:
         json.dump(last_seen_id, f)
 
 def get_tweets(api, last_seen_id):
@@ -55,7 +55,7 @@ def retweet(api, tweets, banned_ids, supporter_ids, last_seen_id):
         if tweet.user.id_str in supporter_ids["supporters"]:
             print("User ID " + tweet.user.id_str + " is a supporter", file=sys.stderr, flush=True)
             api.create_favorite(tweet.id)
-        if tweet.user.id_str not in frequency:
+        if tweet.user.id not in frequency:
             frequency[tweet.user.id] = 0
         if frequency[tweet.user.id] >= 2:
             continue
