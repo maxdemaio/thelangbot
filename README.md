@@ -4,11 +4,11 @@
 
 https://twitter.com/thelangbot
 
+https://maxdemaio.github.io/thelangbot/
+
 ## About
 
 Twitter bot to help you learn foreign languages. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
-
-https://maxdemaio.github.io/thelangbot/
 
 ## Translations
 
@@ -65,6 +65,7 @@ docker run -e API_KEY=your_key -e API_SECRET_KEY=your_secret -e ACCESS_TOKEN=you
 ```
 
 checking logs
+
 ```
 docker logs thelangbot-container
 ```
