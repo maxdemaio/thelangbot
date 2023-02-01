@@ -4,8 +4,6 @@
 
 https://twitter.com/thelangbot
 
-https://maxdemaio.github.io/thelangbot/
-
 ## About
 
 Twitter bot to help you learn foreign languages. Building a community through tweets. Retweets #100DaysOfLanguage and #langtwt.
