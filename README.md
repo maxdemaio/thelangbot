@@ -74,13 +74,3 @@ docker logs thelangbot-container
 
 - Icon made by: [Freepik](https://www.freepik.com) from [www.flaticon.com](https://www.flaticon.com/)
 - Inspiration of this challenge: [100DaysOfCode](https://www.100daysofcode.com/)
-
----
-
-## Sponsors
-
-<p align="center">
-  <a href="https://cdn.jsdelivr.net/gh/maxdemaio/sponsors/sponsors.svg">
-    <img src='https://cdn.jsdelivr.net/gh/maxdemaio/sponsors/sponsors.svg'/>
-  </a>
-</p>
